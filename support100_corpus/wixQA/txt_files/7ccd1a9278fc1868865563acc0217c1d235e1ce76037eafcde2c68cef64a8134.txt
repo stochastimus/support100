@@ -1,0 +1,3 @@
+Disconnecting a Payment Provider
+You can disconnect a payment provider if you no longer wish to use it. Once you've disconnected it, it no longer appears on your checkout page.Disconnecting your payment provider from Wix will not close your account with the provider. You can reconnect your account to Wix whenever you choose. To disconnect a payment provider:
+Go to Accept Payments on your site's dashboard. Click Manage next to the relevant payment provider. Click Disconnect.Disable a payment provider temporarily:If you don't want to disconnect the payment provider but remove it temporarily from your checkout page, disable the Accepting payments toggle. This will change the status next to the toggle to Not accepting payments. 

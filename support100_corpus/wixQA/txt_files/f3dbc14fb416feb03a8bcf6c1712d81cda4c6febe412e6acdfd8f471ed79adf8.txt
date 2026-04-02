@@ -1,0 +1,2 @@
+Request: Triggering Automations on Your Contacts' Birthdays
+We are excited to announce that you can now create automations that trigger on your contacts' birthdays. To do this, you first need to create a contacts segment that groups contacts by birthday. Then, create an automation using the Segments trigger set to trigger when a contact enters your birthday segment.

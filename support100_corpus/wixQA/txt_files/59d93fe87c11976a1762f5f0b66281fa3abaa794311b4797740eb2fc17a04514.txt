@@ -1,0 +1,2 @@
+Wix Editor: Rebuilding Your Site in the Studio Editor
+If your site was originally created using the Wix Editor, it is not possible to migrate it to the Studio Editor. In order to take advantage of the new features and functionality, please rebuild your site in the Studio Editor. 

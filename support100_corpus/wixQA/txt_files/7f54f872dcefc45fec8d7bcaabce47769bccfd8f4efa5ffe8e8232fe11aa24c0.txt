@@ -1,0 +1,18 @@
+Assigning a Domain to a Site in Your Wix Account
+Once you've added a domain to your Wix account, you can assign it to any upgraded site in your account.Important:
+To connect your domain, you must upgrade your site. If you try to assign a domain to a site which doesn't have a Premium or Studio site plan, you will be asked to either upgrade your site or reassign an existing plan from another site.To assign a domain to a site in your account:
+Go to Domains in your Wix account. Go to the Domains page.
+Note: If you have more than one domain in your account, scroll to the domain you want to connect.  Assign your domain to your site:I want to assign a domain that is not currently assigned to a site
+Click Assign next to Not Assigned to a Site in the Unassigned Domains section.
+ Select a site and click Next. 
+Note: If the site is currently connected to a different domain, choose an option:
+    
+Redirect it to the primary domain: Redirect your domain to the site's primary domain that is already connected.   Replace the current primary domain: Connect your domain and disconnect the site's current domain.    Click Assign.
+Learn more about redirecting domains to a primary domain. I want to assign a domain that is currently assigned to a different site
+Click the Domain Actions icon  and select Assign to a Different Site.
+ Select a site and click Next.
+Note: If the site is currently connected to a different domain, choose an option:
+    
+Redirect it to the primary domain: Redirect your domain to the site's primary domain that is already connected.   Replace the current primary domain: Connect your domain and disconnect the site's current domain.    Click Assign.
+Learn more about redirecting domains to a primary domain.If you haven't added a domain to your Wix account:First add a domain using one of the following methods:
+Purchase a domain from Wix Connect a domain purchased elsewhere to Wix Transfer a domain to Wix Transfer a domain from another Wix account

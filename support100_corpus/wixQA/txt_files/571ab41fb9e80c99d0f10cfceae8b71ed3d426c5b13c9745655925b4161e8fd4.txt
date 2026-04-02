@@ -1,0 +1,5 @@
+Wix Stores: Setting Up Free Shipping Above a Set Price
+Important:We're in the process of rolling out new shipping settings. If you have a Create Region button instead of Add Region, then you have the new version. Learn how to set up free shipping above a set price with the new settings.You can offer your customers free shipping every time they make a purchase above a certain price. To offer free shipping above a set price:
+Do one of the following:
+    
+Set up a Flat Rate shipping rule. Learn how Set up a Rate by Weight shipping rule.  Learn how Set up a Rate by Product shipping rule. Learn how   After setting your rates, click the Offer Free Shipping on orders above a specific subtotal checkbox. Enter the price above which shipping is free.Important:If you set up additional shipping services (e.g. Express Shipping), select the checkbox and amount for each shipping service you create:Want to learn more?Check out the full Wix Learn course on getting started with Wix eCommerce. Skip to the fourth video to learn more about setting up shipping.

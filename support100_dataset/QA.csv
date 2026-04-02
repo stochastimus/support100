@@ -1,0 +1,1179 @@
+id,question,gold_standard_answer,gold_standard_documents,,,
+0,What ports are required to be open for Windows PowerShell Monitoring?,"unencrypted port= 5985, encrypted port= 5986",sciencelogic_installation_12-3-3,,,
+1,How can I add space to a database partition?,Run the lvextend -L command,Increasing System Resources on Appliances,,,
+2,"How to resolve Preupgrade Failing with ""Yum upgrade test failed on appliance 1 with exit code 1""?","When encountering a """"Yum upgrade test failed on appliance 1 with exit code 1"""" during pre-upgrade, follow these steps based on the most common causes:
+
+1. Check for Disk Space Issues
+Symptom: Disk space test passes, but Yum upgrade fails despite sufficient space.
+Root Cause: Yum cache can consume up to 3GB during upgrade.
+Solution:
+Free up space by removing Docker images:
+sudo ls -lah /opt/em7/services/cu_docker_imgs.tgz
+sudo rm -f /opt/em7/services/cu_docker_imgs.tgz
+(This frees 650–780MB.)
+If more space is needed:
+Remove unsupported agents (Azure, Splunk, Nessus, etc.).
+Extend the root partition using lvextend and xfs_growfs:
+sudo lvextend /dev/mapper/em7vg-root -L+<size>M
+sudo xfs_growfs /
+(Example: sudo lvextend /dev/mapper/em7vg-root -L+500M; sudo xfs_growfs /)
+2. Check for Conflicting or Custom Packages
+Symptom: Package dependency conflicts (e.g., nscd conflicting with glibc).
+Root Cause: Custom packages installed outside SL1 support.
+Solution:
+Identify custom packages:
+repo_list=$({ yum list installed | awk '$3 ~ /^ @/ {print $3}' | sort | uniq | ↓ grep -vE '@anaconda|@em7*|@/galera-4|@/MariaDB-   server|@/socat'; } 2>/dev/null); for repo in $(echo $repo_list); do yum list installed | grep $repo; done
+Review yum history to find manually installed packages.
+Remove conflicting packages using yum remove <package>.
+3. Handle Specific Known Issues
+From 11.3.2.1+ to 12.1.1:
+
+This upgrade path is invalid due to version ordering.
+Fix: Upgrade to 12.1.2+ instead.
+Stale ppe RPM (12.3.2 → 12.3.x):
+
+Remove the stale package:
+rpm -ev ppe-deserialization-issue-12.3.2-0.0.1-0.el8.x86_64 --nodeps
+Duplicate em7-web-ui packages:
+
+Identify the older version via rpm -qi <package> (check Build Date).
+Remove the older duplicate:
+rpm -ev --nodeps --noscripts --notriggers <Old rpm name>
+drbd-bash-completion conflict (12.1.2):
+
+Use a yum.ts file to skip the package during upgrade:
+touch /tmp/.proc_mgr_pause
+vi yum.ts
+Insert:
+repo disable *
+repo enable em7,em7-os
+remove drbd-bash-completion
+upgrade
+ts solve
+Run:
+sudo yum --disablerepo=* --enablerepo=em7,em7-os --nogpgcheck --assumeyes shell yum.ts
+shim-64 conflict (older ISOs):
+
+Remove the conflicting package:
+sudo rpm -e --nodeps shim-x64
+sudo yum upgrade --setopt tsflags=test --disablerepo=* --enablerepo=em7,em7-os -nogpgcheck -y
+4. General Troubleshooting
+Check /var/log/em7/patch_manager.log for detailed errors.
+Run manual Yum test:
+sudo yum upgrade --setopt tsflags=test --disablerepo=* --enablerepo=em7,em7-os -nogpgcheck -y
+If RPM DB is corrupted:
+mkdir -p /tmp/rpm.bak
+cp /var/lib/rpm/* /tmp/rpm.bak
+rm -f /var/lib/rpm/__db*
+rm -f /var/lib/rpm/.*.lock
+rpm --rebuilddb -vv
+rm -Rf /tmp/rpm.bak
+5. Workaround: Move Yum Cache to /tmp
+If no space to extend partition:
+
+Move cache to /tmp:
+mkdir /tmp/yumrepo
+chmod 755 /tmp/yumrepo
+cp /etc/yum.conf /tmp/yum.conf.original
+vi /etc/yum.conf
+Change cachedir to /tmp/yumrepo/$basesearch/$releasever.
+yum --enablerepo=* clean all
+rm -rf /opt/em7/cache/yum
+df -h
+Retry pre-upgrade.
+Note: Always document changes and revert cache location post-upgrade if needed.
+For persistent issues, open a case with ScienceLogic Support.",Yum upgrade test failed during pre-upgrade,,,
+3,When will SL1 upgrade JQuery?,"Currently, we use JQuery 1.5.2 in SL1 and ScienceLogic will not be upgrading JQuery past this version. However, if there is a Major or Critical vulnerability affecting JQuery that is fixed by the vendor, ScienceLogic will backport the security fix to the JQuery version we use, if it makes sense. In the future, we will eventually stop using JQuery.
+We also do not support nor recommend upgrading JQuery outside of the normal SL1 system update process, as doing so will break functionality in SL1.",JQuery is Outdated in Security Scans,,,
+4,"How do I fix the Windows PowerShell error ""Configuration file does not specify default realm""?","1.On the collector open the /etc/krb5.conf file
+2.For the specified KDC for the domain/realm follow the instructions at page bottom for checking forward and reverse lookup.","Windows PowerShell Common errors and reasons v2, ENG-Powershell Collection Troubleshooting-031025-024433",,,
+5,"How do I fix the Windows PowerShell error ""The specified credentials were rejected by the server""?","Solution-1:
+Execute winrm configSDDL default on the Windows device and ensure the user has Read and Execute permissions.
+Ensure the user is a local admin or a member of the following groups:
+Performance Monitor Users
+Event Log Readers
+Distributed COM Users
+Remote Management Users
+WinRMRemoteWMIUsers__ (if present on Windows device)
+Make sure an AV or other security product is not blocking the user from connecting to WinRM.
+If the HTTP/<FQDN> SPN is set on the server, try using WSMAN://%D or HOST://%D in the host field of the credential instead of %D.
+This error sometimes gets bubbled up instead of the “clock skew too great”, check time and NTP settings.
+Solution-2:
+In the PowerShell credential being used, include the prefix HOST or WSMAN before the entry used in the Hostname/IP text field.
+For example: HOST://%D or WSMAN://%D.
+SL1 will use the WinRM service HOST or WSMan instead of HTTP and replace the variable with the IP address of the device that is currently using the credential.","ENG-Powershell Collection Troubleshooting-031025-024433, Windows PowerShell Common errors and reasons v2",,,
+6,Why is Nightly Discovery removing the device class of my SNMP device?,"This is a known issue. To resolve, follow these steps:
+Step 1: Manually reset the device class and category
+Wrench the device in Registry → Device Manager, and next to the Device Class field on the Device Summary page, click the red icon to change the device class to what it should be
+Step 2: Consider disabling Auto-Update for the device
+If the device’s ports, network interfaces, and other properties are not expected to change, consider disabling the Auto-Update property of the device (which can also be done on the Device Summary page)
+Or upgrade SL1 to 12.3.6.",Nightly_Discovery,,,
+7,How can I verify my couchbase data?,"To validate if the most recent data is present on which node after a failover, you can follow these steps:
+ 
+ 
+1- Check Couchbase UI : Couchbase provides a web-based UI using the PF URL or Load balancer URL https://<PF URL>:8091 or https://<PF IP>:8091 as a first step to monitor the cluster status and data distribution. You can use the Couchbase UI to view the cluster topology and rebalance status. If the UI is not showing the cluster and it loaded the fresh couchbase UI to create a New cluster it's more of an issue that this node has no recent data present. 
+If a node fail-over triggered on Node1 where Load balancer is pointing to, then it will show the node status as not initialized and will show the options as seen in below screenshot.
+
+In this scenario, Try to access the Couchbase UI using the secondary Ports
+ 
+If you're accessing the Couchbase UI using a Load-balancer URL it is possible that it is pointing to a node that has no data. So, try to access the couchbase using the secondary ports by accessing the individual manager nodes using the following steps. This will show which node has the data and will load the UI with current status and replication. 
+ 
+Try with these ports 
+https://<PF Loadbalancer URL>:8100 (or) 8101
+https://<PF manager node2>:8100
+ https://<PF manager node3>:8101
+ 
+If the CouchBase UI loads with the secondary ports it will most likely show the below status with one node in failover state and 2 are clustered and Healthy. It is also possible it just shows 2 nodes if someone took action that kick out that node from the cluster.
+
+ 
+ 
+ 
+Refer to the documentation link here to expose the couchbase ports temporarily to troubleshoot if the above steps are not working.
+ 
+2- Monitor Replication: Couchbase replicates data across nodes based on the configured replication factor. Once you are able to access the UI you can click on Add-back Full Recovery mode if you see the node failover and click 'Auto-Rebalance' to sync with the cluster. By monitoring the replication status, you can ensure that the most recent data is replicated to the required number of nodes.
+ 
+3- Review Logs: Couchbase logs provide valuable information about cluster events, including fail-overs and data re-balancing. Reviewing the logs can help you understand how data redistribution occurred after the failover and confirm the presence of the most recent data on the remaining nodes.
+ 
+docker service logs -f -t --since 10m iservices_couchbase
+docker service logs -f -t --since 10m iservices_couchbase-worker
+docker service logs -f -t --since 10m iservices_couchbase-worker2
+The flag --since 10m to review logs for last 10mins
+ 
+Please raise a support case if you are not sure on the process or unable to validate the data integrity of Couchbase nodes.",sciencelogic_powerflow_3-2-0,,,
+8,What is the best way to stop all monitoring of ALL Virtual Machines under a specific Cluster,"Steps to Resolve: There are 3 Discovery Dynamic Applications that can discover Virtual Machines in the VMware: vSphere Base Pack: VMware: HostSystem VM Discovery VMware: ResourcePool VM Discovery VMware: ClusterComputeResourceVM Discovery First, disable the three Dynamic Applications listed above for the vCenter you would like to stop monitoring. This will ensure that VirtualMachines are not discovered. Second, you will have to manually delete all the VMs already discovered in the DCM.",What is the best way to stop all monitoring of ALL Virtual Machines,,,
+9,"As a SaaS customer, should I discover the IPs of my AWS DE's in my SL1 platform?","Answer:
+No, this can actually lead to various issues in SaaS platforms. This puts extra load on the self monitoring collector which is only expected to monitor the SL1 Stats device, and is not expected to have the extra load that would be placed on it by monitoring the DEs directly. The DEs are already being monitored by the SRE team in the internal SL1 platform, so the DEs should not be discovered by IP within the customer's instance of SL1.","sciencelogic_saas_vpn_12-2-0, SaaS_Customer",,,
+10,"When I am upgrading Syncpacks how can I check compatibility with my current Powerflow Version, existing Syncpacks and ServiceNow Version?",Answer: To check compatibility for the above please see the Release Matrix for the various dependencies. Be aware that for some of the Syncpacks the ServiceNow Minimum version is also applicable.,sciencelogic_powerflow_3-2-0,,,
+11,What is the specific data that is affected by the settings in the System > Settings > Data Retention page?,"Answer: For an overview of what each Data Retention setting affects, please review our documentation here Global Settings. Some of the settings, however, cover a larger portion of data than what the setting name would suggest. Below is a list of the settings in the Data Retention page and the multiple types of data affected by that setting. Note that this list does not include all of the settings in the Data Retention page. If a setting is missing from the list below, it is because that specific setting only affects the data matching the setting name, for example, the Audit Logs settings only affect the audit logs.","sciencelogic_IT_services_classic_12-3-0, sciencelogic_sysadmin_12-5-4",,,
+12,Can I update SL1 appliances using YUM or DNF as it looks like it's running a known Linux distribution?,"Answer:
+Whilst SL1 does utilize a well known Linux distribution, we have customized the installation to provide a self contained appliance that contains both the OS and SL1 application.
+ScienceLogic will provide updates to the underlying OS through bundling these updates via normal SL1 updates.
+Updating any of the appliance packages using publicly available packages through YUM, DNF or RPM can result in appliance instability, compatibility issues, compromise future updates and render the appliance unsupportable.
+ScienceLogic will provide functional and security updates for as long as the SL1 version of the appliance is supported.
+The lifecycle of SL1 versions can be reviewed in the Support Portal under the Documentation>Product Update section and clicking on the Product Life Cycle page.
+Installing, updating or modifying any of the packages or system files outside of the SL1 process might render the appliance unsupportable. More information can be found here:
+Does ScienceLogic support installation of third-party packages on SL1 appliances?",Update_SL1_YumDNF,,,
+13,How to Resolve Split-Brain in OL8,"""Resolving Split-Brain in OL8
+Symptoms
+Both nodes show r0 role: Primary or r0 role: Secondary
+peer-disk: Unknown or peer-disk: WFConnection
+drbdadm status shows split-brain state
+Resolution Steps
+Check current status
+
+drbdadm status
+Ensure resource is up
+
+sudo drbdadm up r0
+Demote the incorrect Primary (if both are Primary)
+
+sudo drbdadm secondary r0 --force
+Promote the correct Primary (if both are Secondary)
+
+sudo drbdadm primary r0 --force
+On the Secondary node, discard local data
+
+sudo drbdadm connect --discard-my-data r0
+On the Primary node, reconnect
+
+sudo drbdadm connect r0
+Verify connection
+
+drbdadm status    ↓
+Note: Always resolve on the passive node first. Use --discard-my-data only if you''re certain about data loss.""","Resolving Split-Brain in OL8, sciencelogic_ha_and_dr_12-3-0",,,
+14,How to discover/classify Windows Server 2025,"Procedure Ensure the platform is on version 12.3.1+, update the platform if necessary Update the Microsoft: Windows Server PowerPack to version 118+",How to discover_classify Windows Server 2025,,,
+15,How do I track down what Powerpack a specific report comes from?,"In this example we want to know where the report Reports > Other > ""Dashboard Snapshot"" comes from.
+SELECT drn.ppguid, drn.title, pp.name AS PowerPack FROM master_reports.dynamic_reports_new drn JOIN master.powerpack pp ON drn.ppguid = pp.ppguid WHERE drn.title like '%Dashboard Snapshot%' limit 1;
+The return in our lab shows this: ppguid title PowerPack
+1F97CBC659586E1F784DC330BFEF9B9C Dashboard Snapshot EM7 Scheduled Dashboard Resources
+So we now know it comes from the EM7 Scheduled Dashboard Resources PowerPack. Should we wish to reinstall this report by reinstalling the Powerpack we can do so now that we know what PowerPack it came from. Please keep in mind some PowerPacks when removed will remove the data it collects from devices aligned to the applications contained within those PowerPacks, so caution is always advised when adding or removing components from the system. In the above example that PowerPack only contains that dashboard, and should be safe to reinstall or remove the PowerPack.","How do I track down what Powerpack a specific report comes from?,  Troubleshooting Dynamic Application SIGTERM",,,
+16,Why am I getting MF rows behind after upgrading to 12.2.1.2?,"This is a known issue after upograding to 12.2.1.2. Apply the provided drop file with these steps if you are on version 12.2.1.2:
+1. Upload the attached drop files(dcm-py3.pyc, dcm-py2,pyc) into “/home/em7admin/” directory across all database appliances on the stack.
+2. Backup the existing dcm.pyc files in both Python 2 and Python 3 locations, to new filenames:
+cp -p /opt/em7/lib/python/sl_da_storageobj/dcm.pyc /opt/em7/lib/python/sl_da_storageobj/dcm.pyc.orig;
+cp -p /opt/em7/lib/python3/sl_da_storageobj/dcm.pyc /opt/em7/lib/python3/sl_da_storageobj/dcm.pyc.orig;
+3. Copy the new dcm-py2.pyc file to /opt/em7/lib/python/sl_da_storageobj, removing the ‘-py2’ portion of the filename. Then set the ownership of the file to root:s-em7-srv and set its permissions to 640.
+chmod 640 /home/em7admin/dcm-py2.pyc;
+chown root:s-em7-srv /home/em7admin/dcm-py2.pyc;
+cp -p /home/em7admin/dcm-py2.pyc /opt/em7/lib/python/sl_da_storageobj/dcm.pyc;
+When asked if you want to replace the file, pick “yes”.
+4. Copy the new dcm-py3.pyc file to /opt/em7/lib/python3/sl_da_storageobj, removing the ‘-py3’ portion of the filename. Then set the ownership of the file to root:root and set its permissions to 744.
+chmod 744 /home/em7admin/dcm-py3.pyc;
+chown root:root /home/em7admin/dcm-py3.pyc;
+cp -p /home/em7admin/dcm-py3.pyc /opt/em7/lib/python3/sl_da_storageobj/dcm.pyc;
+When asked if you want to replace the file, pick “yes”.
+5. Only on Primary Database appliance. Restart the three Data Pull services with command:
+sudo systemctl restart em7_hfpulld em7_mfpulld em7_lfpulld
+6. Check MySQL processlist(System>Tools>DB Tool and run ""SHOW FULL PROCESSLIST"" query), and notice that you don’t see queries like this taking over 1-2 seconds to complete:
+SELECT cdm.id, cdm.parent_did, cdm.root_did, cdm.component_did, cdm.unique_id, ld.cug_id, (scg.fake_cug_capacity != 0) AS in_virtual_cug, ld.id AS did, ld.class_type, ld.keep_hostname, ld.device AS device_name, FALSE as vanished FROM master_dev.component_dev_map cdm JOIN master_dev.legend_device ld ON ld.id = cdm.component_did JOIN master.system_collector_groups scg ON scg.cug_id = ld.cug_id WHERE IF(guid IS NOT NULL, guid = 'xxxxxxxxxx', unique_id in ('xxxxxxxxxx') AND root_did = 12345)
+7. Check your devices, and make sure performance graph data is pulled and populated for the next 15-20 minutes. Also check if Rows Behind number is going down on the monitored primary DB device.
+Issue is also fixed in 12.2.3 and 12.3.0.","[CRITICAL] Medium Frequency rows behind after an upgrade to 12.2.1.2,
+ENG-Rows-Behind Troubleshooting Guide-011025-195652",,,
+17,What team owns the PowerPack VMware: vSphere Base Pack?,Full House,"ENG-PowerPack Team Ownership (Design Center)-061125-180304, ENG-VMware Power Pack Troubleshooting Guide-011025-205530",,,confirm the redaction
+18,What is the SQL query to find backed up async jobs?,"silo_mysql -e ""SELECT COUNT(*) as num_jobs, state, proc, mid FROM master_logs.spool_process WHERE state IN (1,2,3) GROUP BY state, proc ORDER BY num_jobs DESC""",ENG-Rows-Behind Troubleshooting Guide-011025-195652,,,
+19,What do I need to escalate a VMware PowerPack case to engineering?,"Required:
+Result file from vmware_system_status.py. Also remember that this must be run on all of the following: CDB, any affected device’s collector(s), and the root device’s collector. (See
+VMware Power Pack Troubleshooting Guide | [inlineExtension][hardBreak]Troubleshooting Script and Other Tools )
+Output from a CLI run of the affected Dynamic Application on an affected device
+Identify specific examples of the problem: Device Name, Device ID and App Name at a minimum.
+Strongly recommended
+(There is a good possibility we will as for this at some point, if provided up front it will save turnaround time for the customer)
+Logs from the affected device collector with debug enabled (silo.log, sl1.log, sl1-error.log)
+Logs from the root device collector with debug enabled (silo.log, sl1.log, sl1-error.log)
+Note: if changes are made to a customer system, this information will be out of date. We will require new runs of vmware_system_status.py, log files, and CLI runs of the Dynamic Applications so that we have updated data showing the state of the system after the update. We cannot accurately assess the system state without current information.
+Fill out and include this template on every new VMware escalation:
+SL1 version: <version>
+PowerPack version: <version>
+PowerPack revision: <revision>
+vCenter Server version: <version>",ENG-VMware Power Pack Troubleshooting Guide-011025-205530,,,
+20,How do I increase the default Staging time out?,sudo pcli set-patcher-param staging_wait_time <timeout_in_seconds>,ENG-System Update - Known Issues & Troubleshooting-031025-144552,,,
+21,How do I run onDemandProcessing using GraphQL UI?,"""query onDemand { harProviderOnDemandProcessing(ids: []) { results { serviceId timestamp health availability risk } auditHistory { serviceId ruleSetId ruleId timestamp sequence message } }
+}""",Business Services - How to turn up Log Level to :trace in AP2 to capture log data,,,
+22,Can I install/update Restorepoint offline,"Generally yes. Although we recommend allowing Restorepoint to autonomously check for updates, you can disable this by ticking the checkbox This appliance is not connected to the Internet. This can be done during the initial set up, or at a later stage (in the Administration > System Settings > Appliance screen).
+(One exception to this is with a Pool licence. When you are using a Pool licence, you cannot do offline registrations/offline updates. The appliance needs to communicate with our update server directly, or via a proxy. You can set up a proxy as part of the initial registration.)
+Once you have selected This appliance is not connected to the Internet, a Manual Update button will appear in the Administration > System Settings > Appliance screen, which allows you to manually update the appliance licence and/or software.","[Restorepoint] - Can I install_update Restorepoint offline, restorepoint-userguide-56",,,
+23,"[Restorepoint] - ""Invalid key length"" error when trying to backup a Cisco","Older Cisco devices use a very short key, which is incompatible with OpenSSH.
+The solution is to regenerate the key on the Cisco device. It must be at least 1024-bit.","[Restorepoint] - ""Invalid key length"" error when trying to backup a Cisco device",,,
+24,How does encryption work in Restorepoint,"All sensitive data, including device configurations, stored in Restorepoint is protected by filesystem encryption, using AES256. Restorepoint transparently encrypts data when it is written to disk and decrypts it as it is read. Clear-text data is only ever held in volatile memory, and therefore disappears when the appliance is shut down or rebooted, rendering data theft impossible without a valid encryption key.",[Restorepoint] - How does encryption work in Restorepoint,,,
+25,How does Restorepoint work with NAT?,"NAT poses a challenge with devices that use a back-connection to transfer files to Restorepoint; for instance, Restorepoint may connect to a device via SSH, but then a file transfer is initiated by the device, rather than Restorepoint. In those cases, with no additional configuration, the device will use the IP address of the Restorepoint appliance, which may be an unroutable RFC1918 address, which will result in a failure.
+This can be addressed in a number of ways:
+Although using a back-connection may be a default for a particular device, it may be possible to use a different backup protocol that doesn't use back-connections. For instance, for a Cisco IOS, if ""telnet"" or ""ssh"" are selected as backup protocols, a TFTP back-connection will be used. If however ""scp"" is selected, no back-connections will be used, thus avoiding any NAT complications. Note however that additional configuration on the device may be required; in this particular example, scp is disabled in IOS by default, so it needs to be enabled on the device before Restorepoint can use that method. You should always read the Restorepoint Plugin Guide (available under the Help menu), or click on the Info button when editing a device, to find out what options are available.
+If back-connections can't be avoided, for instance because there is no alternative protocol for a particular device, or because no changes are allowed, NAT needs to be set up.
+First of all, you need to set up a 1:1 NAT mapping (often referred to as Static NAT, or MIP, depending on the firewall vendor) to translate the IP address of Restorepoint to a public/routable IP address. The firewall policy needs to allow backup-related traffic between this IP address and the remote device.
+Enter this address in the NAT Address field in the Administration>System Settings>Network Access screen; this will set the global NAT address.
+Edit the device, and tick the Back-Connection NAT checkbox. This will fill the NAT Address field with the Global NAT address. If you have multiple NAT gateways, the Global NAT address can be overridden in the Domain settings or the Device settings.
+If you have multiple devices in one or more remote datacentre, you should consider deploying an Agent, which will remove all the typical issues related to NAT. More information about agents can be found here: [Restorepoint] - Restorepoint Agent .",[Restorepoint] - How does Restorepoint work with NAT,,,
+26,[Restorepoint] - Backup Times out During Export,"If the backup times out during the configuration export this usually means that there a back connection from the device to Restorepoint, as such you will need to ensure there is a connection from the device to Restorepoint.
+If the backup has previously worked and you have ensured there is a connection from the device to Restorepoint, the issue could be because of known hosts, in this case we recommend clearing the known host from Restorepoint, the agent and the device. For the agent and Restorepoint you will need to go to the CLI.
+Related Article: [Restorepoint] - Test Connection works, yet I cannot back up a device",[Restorepoint] - Backup Times out During Export,,,
+27,[Restorepoint] - Device SSH key has changed,"Restorepoint has detected that the device's SSH key has changed.
+This is a security feature of SSH, which prevents a connection if the target host has an unexpected key. This typically happens because the device has been replaced, or the key on the device has been modified.",[Restorepoint] - Device SSH key has changed,,,
+28,[Restorepoint] - What is the Generic Push Plugin,"Generic Push is a ""pseudo"" plugin, which allows file uploads via SFTP or FTP. This can be used for devices which aren't directly supported by Restorepoint, if they're capable of uploading their configuration at regular intervals, or for manual uploads.",[Restorepoint] - What is the Generic Push Plugin,,,
+29,How does Restorepoint handle low disk space situations?,"If storage utilisation is low, Restorepoint will take the following actions: If less than 5% storage is available, Restorepoint reduces the cache allocation, all the way down to 0 if necessary.
+If the available storage is still below 5%, scheduled tasks will stop running. Scheduled tasks will be re-enabled if free space raises above 8%
+Daily email notifications are sent daily if storage usage is above 80%
+Hourly email notifications are sent if storage usage is above 95%.",[Restorepoint] - How does Restorepoint handle low disk space situations?,,,
+30,Is Restorepoint available as a hardware appliance?,Restorepoint is available as a hardware appliance or a VMware virtual appliance. This section describes how to perform the initial configuration of your Restorepoint appliance and configure it to communicate with other devices on your network.,restorepoint-userguide-56,,,
+31,What ports are required to carry traffic from clients to restorepoint?,"Traffic from Clients to Restorepoint
+The following table lists traffic from Restorepoint to network devices:
+Port Purpose
+443/tcp Restorepoint user interface
+22/tcp Restorepoint shell access
+161/udp (optional) SNMP monitoring",restorepoint-userguide-56,,,answer in a table
+32,[Restorepoint] - /fork/exec xxx: Cannot allocate memory,"If a Restorepoint virtual appliance cannot start any tasks and you get this error repeatedly (for example, /fork/exec /usr/bin/ssh: Cannot allocate memory), even when no jobs are running, and the memory usage looks normal (as displayed in the Status page), please ensure that the VMware Tools are up to date.
+If the VMware tools are not running or are not up to date, memory ballooning and transparent page sharing won’t be available, which may cause memory management problems on the virtual appliance.
+Note: (June 2025) We have not seen this issue for a few years and thus, it may be something that newer versions of the Hypervisor have ironed out.",[Restorepoint] - /fork/exec xxx: Cannot allocate memory,,,
+33,my /var/log partition is getting full. What can I do to prevent that? ,"Not so much a Q&A but more of a self-support result with the two KBs being presented and summerized.
+Source = 00533757
+
+
+- The issue with IBM DB2 second instance not being discovered on some devices, while two instances appear on others, is likely due to inconsistent credential configuration or discovery logic in the `silo_ssh_requests` library.
+- This behavior aligns with the known issue: `[MINOR] IBM DB2: Server Discovery (SSH Authentication Error)` affecting versions 105–107.
+- The root cause may be:
+  - SSH authentication failure on certain instances (e.g., due to misconfigured credentials or differing port settings).
+  - Inconsistent `SOAP credential headers` during discovery, leading to partial data collection.
+- Workaround:
+  - Ensure `silo_ssh_requests` version `0.4.7` is aligned with the IBM: DB2 EE library.
+  - Verify that all DB2 instances use consistent SSH credentials and port mappings.
+  - Check if the parent device and component device are assigned to the same collector — if not, it may cause discovery gaps.
+- For devices showing two instances where only one exists, validate the discovery script logic — it may be misinterpreting metadata or duplicate entries due to misconfigured instance IDs.
+
+- If the issue persists, apply the workaround snippet from engineering (EM-65458) to fix the DA’s parent device retrieval logic, and verify after 1–2 polling cycles.
+
+In addition:  Customers should not add multiple database paths in the credential’s headers because that is not supported.","[MINOR] IBM DB2_ Server Discovery (SSH Authentication Error), [NOTICE] IBM: DB2 does not support multiple database paths per stack",,,
+34,"""Currently we have HA (Primary + Secondary). We also have an exact replica of the Primay in another datacenter, which we want to use as DR.
+
+If we configure HA+DR and both HA nodes crash, the DR should take over as the primary if we manual failover to it, but how can we manual failover if the database on the HA is gone? Can you please explain?""","The DR can be promoted to primary on the DR-side. Then you would also need to re-configure APs to point to DR.
+Source = 00494970
+Question on HA+DR configuration
+The Doc page below describes how to failover to DR in both types of situation (where HA is Accessible and when Inaccessible, and also how to fail back). This doc link is directly to the ""Failover when the High Availability Cluster is Inaccessible"" section for reference:
+https://docs.sciencelogic.com/latest/Content/Web_Install_Configure/HA_DR_Configuration/ha_and_dr.htm#failover-when-the-high-availability-cluster-is-inaccessible
+We also have this KB that describes how you can do failover testing with DR:
+https://support.sciencelogic.com/s/article/1392#HA-DR_Fail-Over
+Just like HA Secondary -- DR's SQL Service is always purposefully down and the related disk is not even mounted until it becomes promoted to Primary. Both are also synchronized by DRBD while the SQL service is down on them.
+The Doc Page I sent you has the instructions for how to promote DR to Primary properly. Once it is Primary mysql service should start automatically.",Clustered Database Appliances Will Not Connect,,,
+35,How do I deploy SL1 in Azure?,"SL1 Appliance Deployment Order for Distributed Systems
+To deploy a distributed SL1 system on Azure instances, create appliances in this order:
+Database Server
+Administration Portal (if applicable)
+Data Collectors
+Message Collectors (if applicable)
+Installing and Configuring the Azure CLI
+Azure CLI is a tool that lets you manage resources in Azure. To complete the SL1 installation on Azure using the procedures in this section, you must have the Azure CLI tool installed.
+To install and configure the Azure CLI tool:
+Download and install the Azure CLI tool from the Microsoft website:
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest
+After installation completes, search for and click on ""PowerShell"" in Windows to start the program.
+In PowerShell, type ""az login"". You will be prompted to sign into your Microsoft Azure account. After you log in, you will see information about your Azure subscription within the PowerShell window.
+Configuring an Azure Resource Group and Storage Account
+To create and configure an Azure storage account:
+Log in to the Azure Portal, and then click Resource groups on the left menu.
+Click the Add button and add information for a new Resource group. Click the Create resource group button to create the Resource group.
+After creating the Resource group, click Storage accounts on the left menu.
+Click the Add button, and then click the Create Storage accounts button to create a new Storage account. When creating the Storage account, complete the following fields:
+Deployment model. Select Resource manager.
+Account kind. Select General purpose.
+Resource group. Select Use existing, and then select the Resource group you created in step 2.
+After creating the Storage account, click Storage accounts on the left menu, and then select the newly created Storage account.
+Under the Services section of the Storage account pane, click Blobs. The Blob service blade information appears.
+In the Blob service pane, click the Plus icon to add a new container. Type a name for the container and select Blob as the Access Type. When you are finished, click the Create button to create the Blob container.
+Creating the BLOB_URI
+Before you can upload the VHD image file, you must:
+Determine the URL value of the Azure storage account
+Define the BLOB_URI
+To create the BLOB_URI, you must determine the container URL and then append the name of the VHD file. You will use the BLOB_URI value when you upload the VHD file. This BLOB_URI tells Azure where to put the VHD file and what to call it.
+To determine the container URL:
+Log in to the Azure portal.
+Select Storage Accounts.
+Select the Containers section.
+Click the ellipsis (...) button to the right of the container name to open the pop-up menu.
+Click Container Properties in the pop-up menu. You will see a URL displayed in the Properties.
+Click the blue Copy icon on the Properties page to copy the URL for the container.
+To create the BLOB_URI value, append the destination to the container URL. For example, if the container URL is:
+https://azuretest.blob.core.windows.net
+Your BLOB_URI value might be:
+https://azuretest.blob.core.windows.net/vhds/em7inazure.vhd
+Where ""/vhds"" is the directory on the container, and ""em7inazure.vhd"" is the name of the VHD image file you will be uploading.
+Uploading a VHD Image File to an Azure Storage Account
+After creating the Resource group, Storage account, and Blob container, you must upload the ScienceLogic VHD image file to the Blob container. To do so, you will need the following information:
+The ScienceLogic VHD file
+Resource Group name
+Blob container URI
+Local file path to the VHD file
+Downloading the ScienceLogic VHD File
+To download the ScienceLogic VHD file:
+Open a browser session and go to support.sciencelogic.com.
+Go to the Product Downloads menu and choose Platform.
+Find the platform version that you want to download. Click on its name.
+Expand the Release Files list and find an entry of Record Type Product Image.
+In the Release File Downloads pane to the right, download the .vhd files for each SL1 appliance.
+Converting a VHD Image File from Dynamic to Fixed
+After downloading the ScienceLogic VHD file to a Windows server, you must convert it from Dynamic to Fixed.
+To do this:
+Open a PowerShell session as an administrator.
+At the PowerShell prompt, navigate to the directory to which you downloaded the .vhd file.
+For each .vhd file, run the following command:
+Convert-VHD –Path <vhd_file_path> –DestinationPath <destination_file_path> –VHDType Fixed
+where:
+vhd_file_path specifies the full path of the downloaded .vhd file, including the file name.
+destination_file_path specifies the full path to where you want to store the converted file, including the file name
+If you see the following error, proceed to step 5. Otherwise, proceed to the next section.
+convert-vhd: The term 'convert-vhd' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+To install the Hyper-V Module for Windows PowerShell, run the following command:
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Management-PowerShell
+To install Hyper-V Services, run the following command:
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -all
+Reboot the server when prompted.
+Uploading the VHD File to an Azure Container
+To upload the ScienceLogic VHD file to your Blob container, perform the following steps:
+Open Microsoft Azure PowerShell and log in to your Azure account:
+Login-AzAccount
+You created a resource group and storage container blob to which you will upload your VHD image file in Configuring an Azure Resource Group and Storage Account. You identified the BLOB_URI in Obtaining the Container URL for an Azure Storage Account. Now you are ready to upload your VHD image file.
+The virtual machine that you create in Creating an Azure Virtual Machine must be in the same resource group as the storage account.
+Add your VHD file to the storage account with the following cmdlet:
+Add-AzVhd -Destination '<BLOB_URI>' -LocalFilePath '<VHD_LOCAL_FILE_PATH>' -ResourceGroupName '<RESOURCE_GROUP>'
+where:
+BLOB_URI specifies the BLOB_URI you created in the section Creating the BLOB_URI where you will upload your VHD file. When entering the BLOB_URI, you must include the .vhd file name. For example: https://azuretest.blob.core.windows.net/vhds/em7inazure.vhd
+VHD_LOCAL_FILE_PATH specifies the file path on your machine for the VHD file you want to upload.
+RESOURCE_GROUP specifies the resource group you created and that will be used when you create the Azure VM.
+Repeat step 3 for each VHD file.
+Creating the Image
+The following steps require that you have an Azure resource group and storage account with the VHD file uploaded.
+To create the image:
+Open Microsoft Azure PowerShell and log in to your Azure account:
+Login-AzureRmAccount
+Run the following command:
+az image create --name <image-name> -g <resource-group-name> --os-disk-caching ReadWrite --os-type Linux --source <BLOB_URI>
+where:
+resource-group-name specifies the resource group you created in Azure.
+image-name specifies what you want to call the image (such as ""dbimage123"").
+BLOB_URI specifies the destination value you provided when you uploaded the VHD file. This is also the BLOB_URI you created in the section Creating the BLOB_URI. When entering the BLOB_URI, you must include the .vhd file name. For example: https://azuretest.blob.core.windows.net/vhds/em7inazure.vhd
+This command might return a large amount of JSON output. This is normal.
+Repeat these steps for each SL1 appliance you want to build.",sciencelogic_installation_12-3-3,,,
+36,How do I disable phpMyAdmin? ,"To disable phpMyAdmin, you must disable the service and then disable the ports on which the service runs. To do this:
+Either go to the console of your Database Server or All-In-One Appliance, or use SSH to access the Database Server or All-In-One Appliance. Open a shell session on the server. Log in as an administrator.
+Edit the file /etc/siteconfig/firewalld-rich-rules.siteconfig:
+sudo vifirewalld
+Add the following lines:
+rule service name=""phpmyadmin"" reject\
+rule port port=""8008"" protocol=""tcp"" reject
+Save your changes and exit the file (:wq).",sciencelogic_sysadmin_12-5-4,,,
+37,How do I change the IP address of my collector?,"You can change the IP address of a Data Collector or Message Collector in two ways:
+In the Web Configuration Utility
+From the command line of the Data Collector or Message Collector
+Regardless of the method you choose, SL1 will automatically update the IP address of the Data Collector or Message Collector in:
+/etc.sillo.conf
+/etc/sysconfig/network-scripts/ifcfg-ens160
+/etc/hosts
+the master.system_settings_licenses table, in the ip column
+The following sections explain the necessary steps.
+Using the Web Configuration Utility to Change the IP Address of a Data Collector or Message Collector
+Perform the following steps to log in to the Web Configuration Utility:
+You can log in to the Web Configuration Utility using any web browser supported by SL1. The address of the Web Configuration Utility is in the following format:
+https://<ip-address-of-appliance>:7700
+For AWS instances, ip-address-of-appliance is the public IP for the AWS instance. To locate the public IP address for an AWS instance, go to AWS, go to the Instances page, and highlight an instance. The Description tab in the lower pane will display the public IP.
+When prompted to enter your user name and password, log in as the ""em7admin"" user with the appropriate password.
+After logging in, the main Configuration Utility page appears.
+Select the Interfaces tab.
+In the Interfaces page, select the interface that you want to edit.
+Enter values in the following field:
+Interface IP Address. Required. Enter the IP address for the bonded interface in standard IPv4, dotted-octet format.
+The IP address for the Data Collector or Message Collector will be automatically updated in all the necessary configuration file and database tables.
+Using the Command Line to Change the IP Address of a Data Collector or Message Collector
+Either go to the console of the Data Collector or Message Collector or use SSH to access the server.
+At the shell prompt, enter:
+update_ip <interface_ID> <new_IP>
+where:
+interface_ID is the name of the interface, usually ensn32 or ens160.
+new_IP is the new IP address to assign to the interface.
+The IP address for the Data Collector or Message Collector will be automatically updated in all the necessary configuration file and database tables.",sciencelogic_sysadmin_12-5-4,,,
+38,What was fixed in SL1 12.3.6?,"This section describes the issues that were addressed in SL1 Ibiza 12.3.6.
+Concurrent PowerShell
+Resolved an issue that was sometimes causing a minor event and the message ""Updated PowerShell credential schema V2 not available, fallback to V1"" to appear in the system log for users who utilize concurrent PowerShell. (Jira ID: EM-74551)
+Data Collection
+""Index Label"" class collection objects now properly store the index value when concurrent SNMP collection is enabled. (Case: 00510290) (Jira ID: EM-73945)
+Resolved an issue that caused collection to terminate without completing (SIGTERM) when adding overrides for class-based quality of service (CBQoS) alerts and thresholds. (Case: 00490191) (Jira ID: EM-71930)
+Resolved an issue that caused very high CPU usage, SIGTERMs, and other collection issues on Data Collectors due to the same query running multiple times. (Cases: 00502085, 00502942) (Jira ID: EM-73066)
+Addressed logic errors in critical ping storage and alerting, and also addressed an issue that was causing a unhandled exception. (Jira ID: EM-71776)
+Deployment and Configuration
+Addressed an issue that prevented users who were using a yum proxy from logging in to the Web Configuration Utility. (Case: 00515777) (Jira ID: EM-74126)
+Discovery
+Ensured that SNMP timeouts or other errors occurring while attempting to retrieve a device's sysobjectid does not result in the removal of the device's device class. (Case: 00450503) (Jira ID: EM-71048)
+PhoneHome Communication
+Improved the responsiveness of PhoneHome connections by enabling the ""keepalive"" option for the TCP connection. (Cases: 00437135, 00513519) (Jira ID: EM-65069)
+User Interface
+The Agents page (Devices > Agents) now loads properly when your SL1 system includes vanished agent-monitored devices. (Case: 00493976) (Jira ID: EM-79262)", sciencelogic_12-3-6_release_notes,,,
+39,How do I upgrade my Linux agent?,"To upgrade with Linux :
+Debian or Ubuntu
+sudo dpkg -i sl_agent.deb
+The RUN_AS state can be changed via the command line with RUN_AS_ROOT=1 or by updating the file /etc/scilog/run_state.txt with the same information.
+The command line option will always take precedence.
+The default RUN_AS state is ""root"" when no command line RUN_AS_ROOT=X parameter is given and there is no /etc/scilog/run_state.txt file.
+RHEL or CentOS
+sudo rpm -U sl_agent.rpm
+The RUN_AS state can be changed via the command line with RUN_AS_ROOT=1 or by updating the file /etc/scilog/run_state.txt with the same information.
+The command line option will always take precedence.
+The default RUN_AS state is ""root"" when no command line RUN_AS_ROOT=X parameter is given and there is no /etc/scilog/run_state.txt file.",sciencelogic_agent_monitoring_12-5-1,,,
+40,How do I backup PowerFlow?,"To create a backup:
+To add the relevant configuration information, go to the Configurations page () and click the Edit button or click the Actions button () and select Edit for the ""PF - System Backup Configuration Example"" configuration object. The Configuration pane appears:
+Click the Copy as button and provide values for the following fields in the Create Configuration pane:
+Friendly Name. Name of the configuration object that will display in the user interface.
+Description. A brief description of the configuration object.
+Author. User or organization that created the configuration object.
+Version. Version of the configuration object.
+backup_destination. The location where the backup file is created. The default is /usr/tmp.
+remote_host. The hostname for the remote location where you want to send the backup file via SCP from the backup_destination location.
+remote_user. The user login for the remote location.
+remote_password. The user password for the remote location. Encrypt this value.
+remote_destination. The remote location where the application will send the backup file.
+remote_ssh_key. The remote SSH key you want to use in place of a password for the remote location. Use the newline character \n as a separator. If the SSH key needs a paraphrase to be decrypted, set the paraphrase by creating a remote_password variable in the configuration object aligned with the applications.
+You will need to edit the SSH Key values in the JSON Editor for this release to ensure the key is properly set. For example:""{config.ssh_key}"". This is a known issue that will be addressed in a future release.
+To get a one-line string of the SSH key, run the following command:
+sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' ~/.ssh/id_rsa
+Click the Save button.
+Go to the Applications page and select the ""PowerFlow Backup"" application.
+Click the Configure button. The Configuration pane appears: On the Configuration pane, provide values for the following fields:
+Configuration. Select the configuration object you created in steps 1-3.
+cluster_node. Specify the node from which you want to make the backup (for a single-node backup only). You can specify the order of the nodes that you are backing up by listing each node in order of preference, separated by commas. If one of the nodes fails or is unavailable, the backup application continues down the list of nodes in the order you specified in this field. For example: couchbase-worker.isnet,couchbase-worker.isnet2,couchbase.isnet. To use the ordered backup option, you must also check the single_node field.
+use_ssh_key. Select this option if you want to run the backup application using an SSH key for authentication instead of using a password. You will need to provide a remote_ssh_key value in the configuration object you aligned with this application, such as config.remote_ssh_key.
+single_node. Select this option only if you want to back up from a single node in the cluster. Specify the node in the cluster_node field. You should also select this option if you want to specify the order of the nodes that you are backing up, and list each node in order of preference in the cluster_node field.
+verify_cluster. Use to verify Couchbase Cluster Health Status.
+The verify_cluster option must not be disabled, otherwise incomplete backups can be created in cluster environments if the cluster is unhealthy.
+create_report. Create a report of the content bucket document IDs that were backed up. This only works if the verify_cluster option is enabled and the cluster is healthy.
+data_only. Select this option if you only want to restore bucket data.
+compress. Select this option to compress backups using Gzip.
+include_syncpacks. Select this option if you want to back up the SyncPacks on the PowerFlow system.
+installed_only. Select this option if you want to back up only SyncPacks that have been installed. If you do not select this option, the application will also back up SyncPacks that have been uploaded to the PowerFlow system.
+bucket. Select which bucket in Couchbase you want to back up. Your options include:
+all. Back up all buckets.
+content. Back up only buckets that have content in them.
+logs. Back up only the logs.
+To keep backups as small as possible, ScienceLogic recommends selecting only data_only and bucket > content. These settings will keep backups to <5mb each, and contains all essential data (configuration objects, applications, and steps).
+document_key: Select whether you want to back up all record or CI and device cache records.
+The options you select affect the name of the backup file that this application generates. For example, is_couchbase_backup-data_only-2019-04-01T185527Z.tar is a uncompressed data only backup, while is_couchbase_backup-data_only-cache-logs-couchbase.isnet-2019-04-01T185937Z.tar.gz is a compressed data-only backup of the CI and device cache from the couchbase.isnet node in a cluster.
+Click the Save button. The Configuration pane automatically closes.
+On the Application detail page, click the Run Now button. When the application completes, a file named ""is_couchbase_backup-<date>.tar"" is added to the remote server in the specified remote backup destination.
+To ensure that the backup was created, select the ""Create IS Backup"" step and open the Step Log section.
+Look for entries related to backup and make a note of the of the backup file name, which you will need when you run the ""PowerFlow Restore"" application:",sciencelogic_powerflow_3-2-0,,,answer in image and text
+41,How do I fix the error KeyError: 'curl_url' when using Linux SSH Automations policies?,"Step 1: Download v1.1.1 of the silo_network_tools library
+silo_network_tools+1.1.1…
+Step 2: Remove v1.0.16 of the silo_network_tools library from the Linux SSH Automations v2.0 Execution Environment
+Step 3: Add v1.1.1 of the silo_network_tools library to the Linux SSH Automations v2.0 Execution Environment",[Major] KeyError: 'curl_url' when using Linux SSH Automations policies,,,
+42,Why is my mail configuration broken after upgrading to SL1 12.3.6?,"Issue
+After updating from 12.1.1 to 12.2.x/12.3.x, it has been observed that the inbound email configuration breaks.
+Details
+The configuration will remain in the database, so the UI still shows the configuration exists, but the authorized email domain customization are removed from the /etc/postfix/main.cf file so emails are bounced back. This seems to be due to a race condition in 12.2.0+
+
+Steps To Reproduce
+1. Install 12.1.1
+2. 3. Configure some Authorized Email Domains from the System > Settings > Email page
+Access the database CLI and run: grep mydestination /etc/postfix/main.cf
+1. Observe that the domains you configured in the UI are reported
+4. Update to 12.2.1.2. Wait for postupdate to complete
+5. Access the database CLI and run: grep mydestination /etc/postfix/main.cf
+1. Observe that the domains you configured in the UI are no longer reported
+6. To workaround: Go back to the System > Settings > Email page, click save
+1. Access the database CLI and run: grep mydestination /etc/postfix/main.cf
+1. Observe that the domains you configured in the UI are reported
+Symptoms
+After update, emails start bouncing back
+Workaround
+Go to the System > Settings > Email page, click save
+Fix
+This issue is targeted for a fix in 12.3.10/12.5.2/12.6.0 (Engineering Jira Reference: EM-71748 and EM-
+75104/EM-75443).","12.3.x Update Inbound Email Configuration Breaks, [MAJOR] Inbound Email no longer works after updating to 12.2.1.2",,,
+43,What is a SIGTERM?,"SL1 Collection processes are run at regular intervals for a specific period of collection and have a run time limit. When this time limit is exceeded, the process is sent a signal to terminate (a SIGTERM). When we are unable to complete all configured collections within the run time limit, we start to see SIGTERMs.
+SIGTERMing typically happens on heavily loaded collectors when thousands of jobs (app/device pairs) are scheduled for collection. There is a pool of worker processes that execute chunks of jobs in succession. While having multiple worker processes gives us some parallelization, a chunk of jobs is executed serially within each worker. When the cumulative execution time of one or more chunks exceeds the SIGTERM limit, process manager will issue SIGTERMs followed by SIGKILLs for any workers that are still lingering. Any jobs that were queued up after that point will not have had a chance to execute and will not satisfy their collections, leading to gaps in time-series graphs for performance data, auto-disabling of collection tasks, etc.
+That said, a heavily loaded collector is not a requirement for seeing SIGTERMs. If a single job were to take more time than the SIGTERM limit, that one job would get SIGTERMed. There can be a variety of reasons that a job can take excessive time to complete. Incorrectly configured credential retry counts or time limits, network delay, inadequately provisioned devices, and inefficient applications are just a few of the possible ways that a job can be slow.","Troubleshooting Interface Bandwidth SIGTERMs, Troubleshooting Dynamic Application SIGTERM",,,
+44,What is a SQL query to see the top 10 event policies for active events? ,"SELECT Concat(pe.ename, ""["", ea.etype, ""]"") AS ""Event Name [ID]"", Count(*), estate, ea.emessage AS SampleMessage
+FROM master_events.events_active ea JOIN master.policies_events pe ON pe.id = ea.etype
+GROUP BY estate, Concat(pe.ename, ""["", ea.etype, ""]"")
+ORDER BY Count(*) DESC
+LIMIT 10;",service-Useful Queries,,,
+45,How can I install third-party packages on SL1 appliances? ,ScienceLogic does not support installing any third-party packages or modifying any configuration files of an appliance. Doing so voids the warranty. Changes to an appliance can cause system failure and make the stack unable to be upgraded to new SL1 versions.,Does ScienceLogic support installation of third,,,
+46,I get a license expiry event. What should I do? ,"You need to submit a license request , then use steps in the documentation below to install it https://docs.sciencelogic.com/latest/Content/Web_Install_Configure/Installation/installation_web_config.htm
+
+You can also:
+If it's a Critical event (""License expires in less than 14 days"" or ""License expired""), act immediately.
+If it's a Major event (""License expires in less than 30 days""), plan ahead.
+Verify the license status.
+Submit a License Request:
+Go to: https://support.sciencelogic.com/s/create-service-request
+Select ""License Request"" as the category.
+Provide:
+Hostnames
+MAC addresses
+Registration keys from all DB/AIO appliances
+If expiration is imminent (within 24 hours):
+
+Call ScienceLogic Support immediately at: https://support.sciencelogic.com/s/contactsupport
+After submission:
+
+Wait for the new license to be issued (processed within business hours: Mon–Fri, 9AM–6PM US EST).
+Apply the new license via the UI or CLI.
+
+Note:  The appliance checks for license updates every 24 hours.
+If offline, manually force an update:
+Administration > System Settings > Appliance > Force Check/Update Now
+Grace period:
+
+90 days after expiration before processes stop","restorepoint-userguide-56, sciencelogic_powerflow_3-2-0 , sciencelogic_sysadmin_12-5-4.pdf",,,
+47,I forgot my em7admin password. How do I reset it? ,"There are multiple em7admin accounts in SL1. If you forgot UI em7admin password, please follow steps in the KB 1498, but if you forgot CLI/SSH password, follow steps in KB 1270. 
+
+1. Option 1: If you've forgotten the em7admin password for the SL1 UI, you can reset it by logging in with another
+user account of Account Type ""Individual / Administrator"". Users that are administrators via Account
+Type ""Policy Membership / User: EM7 Administrator"" do not have sufficient privilege to reset the
+passwords of ""Individual / Administrator"" accounts. Please refer to docs ""resetting em7admin ui password"" for further details. 
+
+2.  Option 2: Via SSH as the ""em7admin"" user - 
+a. Step 1 Reboot server.
+b. Step 2 Edit profile in GRUB menu. 
+c. Step 3 Locate rhgb quiet.
+d. Step 4 Replace “rhgb quiet” with ""init=/bin/bash"" (no quotes).
+e. Step 5 Boot the appliance,  press CTRL+x 
+f. Step 6 Wait for the bash prompt
+g. Step 7 Remount Filesystem
+h. Step 8 Reset the Password
+i. Step 9 Reboot the appliance, then login with the new password",Resetting the em7admin UI Password,,,
+48,Who is my CSM/CEM? How do I contact my CSM/CEM? ,You CSM is <name of CSM>:<email>. And if CSM is not available you can also contact your Account Exec <name of AE>:<email>,"
+sciencelogic_12-2-0_release_notes,  Find My Case new customer functionality in support portal website",,,
+49,I am not receiving events from traps that I sent to SL1. What could be wrong? ,"You need to make sure your configuration is correct. Refer to this section of the documentation: https://docs.sciencelogic.com/latest/Content/Web_Events_and_Automation/Syslogs_and_Traps/snmp_traps.htm
+Then you can use steps in KB 4692 to test your configuration. And finally, you can check KB 11392 to ensure your configuration is not missing authUser in snmptrapd.conf file.
+
+
+""## Likely causes when traps don’t show up as events in SL1
+
+### 1) Traps aren’t actually reaching the right SL1 appliance (network/port)
+- By default, SL1 collectors listen for traps on UDP `162` (unless you changed it). Make sure the device is sending to the correct IP and port .
+- Quick verification on the **Message Collector** (or the collector you expect to receive traps):
+  ```bash
+  tcpdump -i any udp port 162 -s 0 -vv
+  ```
+  If you don’t see packets, it’s upstream (routing, firewall, NAT, wrong destination).
+
+### 2) Collector Group alignment is wrong (SL1 discards or can’t associate the trap)
+SL1 only processes traps if:
+- The sending device is aligned to the same **Collector Group (CUG)** as the Data/Message Collector receiving the traps .
+- The device IP used for monitoring (“management IP”) matches the trap source IP; if the device has multiple IPs, you may need to set the correct one as **Primary IP** .
+- If there’s a load balancer/NAT in front, the original source IP must be retained—if the source IP gets overwritten, SL1 may discard the message .
+
+### 3) SNMPv3 traps are arriving, but `snmptrapd` isn’t authorizing/processing them
+If you’re using SNMPv3, it’s common to see packets arrive via `tcpdump`, but nothing gets logged/processed due to config issues:
+- Confirm `createUser` is correct in `/etc/snmp/snmptrapd.conf` (engine ID + auth/priv settings) .
+- Make sure there’s an `authUser` line authorizing that user; without it, traps may not be processed :
+  ```bash
+  # in /etc/snmp/snmptrapd.conf
+  authUser log,execute,net <myuser>
+  ```
+- Then restart `snmptrapd` (and clear persisted config) :
+  ```bash
+  systemctl mask snmptrapd && systemctl stop snmptrapd
+  rm /var/lib/net-snmp/snmptrapd.conf
+  systemctl unmask snmptrapd && systemctl start snmptrapd
+  ```
+
+### 4) SNMPv3 EngineID mismatch (seen with some Fortinet devices)
+Some Fortinet devices can send traps using an EngineID that doesn’t match what you configured. The workaround is to capture a trap and use the `msgAuthoritativeEngineID` value in `snmptrapd.conf` .
+- Capture:
+  ```bash
+  tcpdump -i any port 162 -s 0 -vvv -w /tmp/traps_dump.pcap
+  ```
+- Inspect the PCAP and update `/etc/snmp/snmptrapd.conf` to match the EngineID format the device is actually using .
+
+### 5) SL1 is receiving “too many” traps (rate limiting)
+SL1 can throttle syslog/trap processing if a device sends more than ~25 messages/sec . If your test trap works but bursts don’t, this is worth checking.
+
+## What I need from you to narrow it down
+- Are these **SNMPv2c or SNMPv3** traps?
+- Which appliance should be receiving them: a **Message Collector** or a **Data Collector**?
+- When you run `tcpdump` on the collector, do you see the trap packets arriving on UDP `162`?""","SNMP v3 traps or informs configuration and testing, SNMPv3 Trap Configuration in snmptrapd.conf to Authorize Users,  SNMP traps not getting aligned to the source device, SNMP Trap OID translated incorrectly as integer or other value",,,
+50,I am unable to open cases on the portal. What should I do? ,"You can reach us via Chat and report an issue, or contact your CSM <name> at <email, or Account Exec <name> at <email>.","[INTERNAL] Opening a Support Case for a POV, Find My Case new customer functionality in support portal website, Customer Case Management new functionality added to My Support",,,
+51,Why do I have tmux enabled? ,"TMUX is enabled when you SSH into SL1. See KB 15324 for details. However in version 12.3.4 tmux was turned off by default. To re-enable, use you need to add ""TMUX = true"" into "" [OS_HARDENING]"" section using visilo command. Details in KB 17625.",sciencelogic_12-3-5_release_notes,,,
+52,Can I install Crowdstrike Falcon on SL1 appliances? ,Yes. Currently we have tested installation of Falcon Insight (EDR) and Falcon Prevent (NGAV) on SL1 appliances,"[Restorepoint] - CrowdStrike Sensor Self-Installation, Does ScienceLogic support installation of third",,,
+53,Why my filesystem is not generating alerts when hitting Major/Critical threshold,It could be related to the behaviour in KB 6315 where event won't be triggered on filesystems that are less than 1GB in size.,"No File System Usage Events Happening (usually for File Systems Under 1 GB in Size), sciencelogic_sysadmin_12-5-4",,,
+54,When 12.1.2 will be End-Of-Life? ,"If you would like to check the Product Lifecycle of your ScienceLogic Product, you can click here to visit the Product Updates page on our Support Portal: https://support.sciencelogic.com/s/product-update or contact supoort.",end_of_life,,,
+55,Which Vmware version can SL1 monitor? ,"SL1 is designed to be compatible with ESX versions 6.5, 6.7, 7.0, and 8.0. It is built on up-to-date versions of Linux and thus has the same basic compatibility as any other Linux based system.",What versions of VMWare ESX is SL1 compatible with?,,,
+56,Can I use YUM/DNF to upgrade SL1 appliances? ,"No, you should not use yum or dnf to upgrade SL1 appliances.
+
+SL1 appliances are self-contained systems with a customized Oracle Linux base.
+ScienceLogic provides OS updates only through official SL1 system updates.
+Using yum or dnf directly can cause:
+Package conflicts
+System instability
+Breakage of future upgrades
+Loss of support
+✅ Use only the official SL1 System Update process.
+❌ Avoid yum, dnf, or rpm commands unless explicitly instructed by ScienceLogic Support.
+
+For security or OS-level package updates, follow the approved procedures in the documentation or contact Support.","Update_SL1_YumDNF, ENG-System Update - Known Issues & Troubleshooting-031025-144552",,,
+57,How do I know if SyncPack is compatible with my PowerFlow version? ,To check compatibility for the above please see the Release Matrix for the various dependencies: https://docs.sciencelogic.com/latest/Content/Web_General_Information/Doc_Archive/powerflow_release_matrix.htm,sciencelogic_powerflow_3-2-0,,,
+58,Which ISO version do I need to use when deploying a collector? ,"It's always best practice to use the ISO of the same base version as that of the active central database appliance (CDB) when deploying a new appliance.
+For example:
+
+E.g. If the CDB is running 12.3.x then the 12.3 ISO should be used to deploy a new appliance or if the CDB is running 11.3.x then the 11.3 ISO should be used.
+This ensures compatibility and avoids issues with communication, version mismatches, or configuration errors.",sciencelogic_installation_12-3-3,,,
+59,What is used as a device name when I discover a device using IP? ,"In the case of physical devices SL1 can use one of two processes to determine the display name to use in the SL1 registry for the device.
+The first is the entry as recorded in the device's SNMP OID sysName (1.3.6.1.2.1.1.5) if the device has a working read only SNMP credential aligned to it in it's device properties page.
+The second is through a DNS reverse lookup against the IP address of the device, this requires the Collector that the device is aligned to have access to a working DNS server with a reverse lookup zone where the device has an entry in.
+You can control which option should be preferred on a global scale and that can be set in the System>Settings>Behavior page. This is documented in Global Settings",How does SL1 know what my device name should be in the Registry?,,,
+60,How duplicate SNMP Engine ID can impact my collections? ,"Devices that have duplicate engine IDs violate RFC 3414. You will hit an issue with Availability, dynamic application collection and other collection processes are flapping on devices using SNMP v3 described in KB 1107.",Availability dynamic application collection and other collection processes are flapping on devices using SNMP v3,,,
+61,What information do I need to collect when opening cases? ,v,How to get faster resolution on Support cases,,,
+62,How do I address Dynamic App process SIGTERM? ,"You can follow steps in KB 1360 that describes various reasons and contains SIGTERM script that you can run to collect data
+
+When the Dynamic App process SIGTERMs, it means the process exceeded its 15-minute time limit and was terminated by the Process Manager. Here’s how to address it:
+
+### Common Causes & Fixes
+- **Credential timeout too long**  
+  Reduce the timeout in the credential settings. Long waits delay the process.
+
+- **Too much data collected**  
+  Disable unnecessary collection objects or apps. For example, if monitoring a Windows server with both SNMP and PowerShell CPU apps, disable one.
+
+- **Cache-consuming apps stuck waiting**  
+  Check for apps that depend on other apps (e.g., a PowerPack app waiting for cache). Use `sigterm_script_py3.py` to identify bottlenecks.
+
+- **Too many processes running**  
+  Reduce the number of concurrent collections. Consider adding another collector to balance load.
+
+- **Insufficient worker processes**  
+  Lower the **Batch Factor** for the Data Collection: Dynamic App process (affects all collectors). This increases the number of worker processes spawned.
+
+### Diagnostic Steps
+1. **Check logs**  
+   Look in `/var/log/em7/silo.log` for:
+   - `Data Collection: Dynamic App process did not complete in its allowed timeslot, SIGTERM'ing.`
+   - `Data Collection: Dynamic App device list at termination` → lists unprocessed `DeviceID, AppID` pairs.
+   - `Data Collection: Dynamic App task list at termination` → shows GUIDs (PowerPack) and child process IDs.
+
+2. **Run the SIGTERM script**  
+   On the CDB:
+   ```bash
+   python3 sigterm_script_py3.py --simple-logging -c 20 -t 10 | tee sigterm_results.log
+   ```
+   Upload `sigterm_results.log` to Support.
+
+3. **Enable debug logging**  
+   In System > Settings > Processes, enable **Debug** for “Data Collection: Dynamic App”. Logs appear in `/var/log/sl1/dynamic_collect.log`.
+
+4. **Check for known issues**  
+   If running **8.9.0**, this is a known bug fixed in **8.9.1**. Apply the `dynamic_collect.py` patch file from the KB article.
+
+### Immediate Actions
+- Unalign unused apps from devices.
+- Reduce Batch Factor (e.g., from 20 to 10).
+- Disable redundant or high-data apps.
+- Upgrade to 8.9.1+ if on 8.9.0.
+
+### When to Escalate
+If the issue persists after troubleshooting, provide:
+- SIGTERM logs
+- `sigterm_results.log`
+- Debug logs
+- System specs (CPU, RAM, cores)
+
+This helps Engineering pinpoint root causes.""",Troubleshooting Dynamic Application SIGTERM,,,
+63,How to I enable/adjust compression with DRBD? ,"You can follow steps in KB 1474 that describes what needs to be adjusted in ""/etc/drbd.d/r0.res"" file on your appliances.
+
+""To enable or adjust compression with DRBD, follow these steps based on your system configuration:
+
+For SL1 OL7 systems using DRBD8:
+Enable compression by editing the /etc/drbd.d/r0.res file on all cluster members.
+Add the following lines in the proxy section (where memlimit is defined):
+plugin { zlib level 5; }
+Example:
+resource r0 {
+    ...
+    proxy {
+        memlimit 1024M;
+        plugin { zlib level 5; }
+    }
+    ...
+}
+Restart the DRBD proxy service:
+On SL1 11.x or older:
+/etc/init.d/drbdproxy stop; /etc/init.d/drbdproxy start;
+On SL1 12.x+ (OL7):
+systemctl stop drbdproxy; systemctl start drbdproxy;
+Verify compression is active:
+echo 1 > /sys/module/drbd/parameters/proc_details
+watch -n 2 ''drbd-proxy-ctl -c """"show hconnections""""; echo; drbd-proxy-ctl -c """"show memusage""""; echo; cat /proc/drbd''
+⚠️ Important Notes:
+
+Use zlib level 5 as the recommended balance between compression and CPU load.
+Only enable compression if bandwidth is limited and the system has CPU headroom (load average < 80% of physical cores).
+Do not change compression settings without guidance from ScienceLogic Support.
+For SL1 OL8 systems (DRBD9):
+Compression is enabled by default using lz4.
+The compression level is set automatically during cluster setup and should not be changed without explicit support direction.
+If you see false """"trailing garbage"""" warnings in systemctl status drbdproxy, they are not actionable — the configuration is applied correctly.
+✅ Recommendation: If you''re on OL8, avoid manual compression changes. Use the default lz4 compression.
+
+Let me know if you want help checking your current setup.""",Using Compression with DRBD,,,
+64,Is there a memory limit that SL1 processes can use? How to change that? ,"Yes, there is a virtual memory limit. To adjust you need to [PROC_VIRTUAL_MEM_LIMIT] section into /etc/silo.conf and /etc/siteconfig/siloconf.siteconfig files. Follow steps in KB 3405"," ENG-Device Network Topology Troubleshooting-031025-003742, sciencelogic_sysadmin_12-5-4",,,
+65,How do I use newer SMB protocol version for backups? ,"See the main Backup Management documentation page and search ""To access additional configuration options for this backup"" to find the relevant section: https://docs.sciencelogic.com/latest/Content/Web_Admin_and_Accounts/System_Administration/sys_admin_backup_management.htm#defining-a-configuration-backup", sciencelogic_sysadmin_12-5-4,,,
+66,I have issues with SNMPv1 traps not generating events,"You might need to try steps in KB 5623: 
+
+
+Titlev1 SNMP traps not getting aligned to the source device
+Summary
+Article DetailsIn SL1, the default behavior for v1 traps is to always align them to a device based on the agent_addr varbind contained in the trap. So you may see devices sending v1 traps to SL1 but they end up in the message collector logs as ""Trap Received from Unknown Device..."". Or, you may see the traps being aligned to a different device entirely and this is because the source device is sending along an ""agent_addr"" value in the trap that references a different IP address.
+
+If the devices are including an agent_addr varbind, make sure the devices are configured to populate this varbind with the ip address of whichever device you want SL1 to align the trap with.
+
+agent_addr varbinds are optional, however and in the case that the device are not including this varbind, there are 3 options to make sure v1 traps get aligned properly:
+
+1. Configure the devices to include an appropriate agent_addr varbind with their v1 traps. Consult the device vendor on how to create custom varbinds on the device.
+2. Configure the devices to use v2 or v3 traps instead, which we process differently and, by default, they route to the source address if no agent_addr varbind is provided.
+3. Or, per the documentation (Global Settings that Affect SNMP Trap Processing):
+To add a settings to the silo.conf file on an appliance:
+
+Either go to the console of the SL1 appliance or use SSH to access the server.
+Login as user em7admin with the password you configured during setup.
+At the shell prompt, enter the following:
+sudo visilo
+On a line of its own, add the new entry in the [LOCAL] section: 
+use_v1trap_envelope_addr=15. Save your changes and exit the file (:wq).
+6. Restart the EM7 Core: Event Processing Engine engine:
+sudo systemctl restart em7_event",SNMP traps not getting aligned to the source device,,,
+67,My /var/log partition is getting full. What can I do to prevent that? ,"There is a known issue KB 6133 for the issue that was addressed in 12.3.1 release. If you are running on older release, you might need to upgrade your system. KB contains steps to resolve the issue if an upgrade is not an option.: From the KB: ""Here’s what you can do to prevent your /var/log partition from filling up:
+
+🔍 Step 1: Identify the Largest Files
+Run these commands to find the biggest culprits:
+
+df -h /var/log
+du -sh /var/log/* | sort -hr | head -n 10
+
+Common offenders:
+
+/var/log/azure/ – Azure collector logs (see KB: Azure Logs Keep Filling Up)
+/var/log/em7/snmp_collector.log.* – SNMP collector logs (see KB: Concurrent Network Interface Collection)
+/var/log/phonehome/shell_phonehome.log – Phonehome logs (see KB: Shell Phonehome Log Too Large)
+/var/log/sl1/ – SL1 logs (bug in OL8 systems, see KB: /var/log Filling Repeatedly)
+/var/log/ with deleted files still holding space (due to rsyslog HUP bug)
+🛠️ Step 2: Immediate Fixes
+File/Directory Action
+/var/log/azure/Microsoft* Clear with: echo > /var/log/azure/Microsoft*
+/var/log/em7/snmp_collector.log.* Remove: rm /var/log/em7/snmp_collector.log.*
+/var/log/phonehome/shell_phonehome.log Zip and zero:
+tar -zcvf """"shell_phonehome.log.$(date ''+%Y-%m-%d'').tgz"""" shell_phonehome.log
+> shell_phonehome.log
+``` |
+| `/var/log/sl1/` (OL8, 12.1.x) | Fix logrotate: edit `/etc/logrotate.d/sl1` and change `postrotate` to:  
+```bash
+postrotate /usr/bin/systemctl -s HUP kill rsyslog.service >/dev/null 2>&1 || true endscript
+``` |
+
+---
+
+### 📆 Step 3: Prevent Future Issues
+
+- ✅ **Add logs to log rotation**: Use [Adding Log Files to the Log Rotation Schedule](#) KB.
+- ✅ **Check data retention settings**: Go to `System > Settings > Data Retention` and reduce retention if needed.
+- ✅ **Reduce log verbosity**: Set `LOG_LEVEL=WARNING` in `/opt/em7/services/snmp_collector/snmp_collector_shared.env`.
+- ✅ **Monitor regularly**: Use `df -h /var/log` and alerting to catch issues early.
+
+---
+
+### 🔄 Optional: Restart Services
+After cleanup, restart related services:
+```bash
+systemctl restart rsyslog
+systemctl restart snmp_collector
+
+💡 Note: Never delete MySQL or Couchbase data files. Use proper pruning via maintenance or retention settings.
+
+Let me know if you want a graph of log growth trends or a log rotation plan.""",SL1 Appliance Partition Full Issues,,,
+68,"I see ""Thread died in Berkeley DB library"" when running an rpm command. What should I do? ","You might be hitting an issue described in KB 8821. Please follow steps in the KB to resolve.
+
+'''""You''re seeing the """"Thread died in Berkeley DB library"""" error because your RPM database (RPMDB) is corrupted. This is a known issue on ScienceLogic appliances and can prevent commands like rpm -qa from working.
+
+Here’s what you should do:
+
+✅ Immediate Fix: Rebuild the RPM Database
+Follow these steps to resolve the corruption:
+
+Backup the current RPM database:
+
+sudo mkdir /tmp/rpm.bak
+sudo cp -a /var/lib/rpm/ /tmp/rpm.bak/
+
+Remove the corrupted database files:
+
+sudo rm -f /var/lib/rpm/__db.[0-9][0-9]*
+
+Rebuild the RPM database and clean caches:
+
+sudo rpm --quiet -qa
+sudo rpm --rebuilddb
+sudo rm -f /var/lib/rpm/.rpm.lock
+sudo rm -f /var/lib/rpm/.dbenv.lock
+sudo yum clean all
+
+Verify the fix:
+
+sudo rpm -qa
+
+If this runs without errors, the issue is resolved.
+
+Clean up the backup (optional):
+
+sudo rm -rf /tmp/rpm.bak/
+
+Note: This issue can occur after system crashes, power failures, or during upgrades. If you''re on an older SL1 version (before 8.14.5 or 10.1.0), consider upgrading to a newer release where this bug is fixed.
+
+Let me know if you''d like help checking your current version or confirming the fix.""''",​​​​​​​[MAJOR] Yum DB Corruption Issues,,,
+69,I am unable to discover Juniper devices. Hitting an Unhandled Exception,"Hidden spaces in the Discovery Qualifier and Qualifier Match (Value) fields in the device class cause internal field matching to fail.
+Workaroung steps in KB 12063:  Root Cause
+The Juniper Base Pack (versions prior to 104) has device classes with hidden spaces in the identifyer_2 or identifyer_3 fields.
+When discovery runs, it tries to match these fields, but encounters NoneType or invalid strings due to the spaces.
+This triggers a TypeError: expected string or Unicode object, NoneType found — which causes the discovery to hang or fail silently.
+ Fix: Clean Up the Database Fields
+You need to run two quick SQL queries in the DB Tool (System > Tools > DB Tool):
+
+UPDATE master.definitions_dev_classes 
+SET identifyer_2 = '''' 
+WHERE class LIKE ''%juniper%'' AND identifyer_2 = '' '';
+
+UPDATE master.definitions_dev_classes 
+SET identifyer_3 = '''' 
+WHERE class LIKE ''%juniper%'' AND identifyer_3 = '' '';
+ Note: These queries replace only fields that contain a single space ('' '') with an empty string.
+
+After Running the Queries:
+Restart the discovery process (either a new Initial Discovery or a Re-discovery).
+Check System > Monitor > System Logs to confirm no more Unhandled Exception errors.
+Verify that Juniper devices are now being discovered correctly.
+ Pro Tip:
+This issue is fixed in Juniper Base Pack v104. If you’re on an older version, consider upgrading to avoid this issue long-term.",[MINOR] Discovery UHE error while discovering Juniper devices,,,
+70,I have PowerShell Collection issues. How do I fix it? ,"You can follow troubleshooting steps in KB 11811. If you need to open a case, please also follow KBs below:
+Legacy PowerShell: What to Collect on ""PowerPacks: Solution: Microsoft"" Cases(https://support.sciencelogic.com/s/article/1417)
+Concurrent PowerShell: What to Collect on ""PowerPacks: Solution: Microsoft"" for Concurrent PowerShell Cases(https://support.sciencelogic.com/s/article/9498)
+You can also check commone errors and solutions in KB 7129","ENG-Powershell Collection Troubleshooting-031025-024433, Windows PowerShell Common errors and reasons v2, Enhanced Troubleshooting Guide - PowerShell",,,
+71,Why some users cannot see certain device groups? ,"If a Device Group was created by a user that has been deleted, then this device group may not appear. The affected Device Group will have a blank owner when viewed from an administrator account, whereas a normal user will not be able to view it. It is a Known Issue. Workaround available in KB 12070",[MINOR] Users unable to see some shared device groups,,,
+72,Why pre-upgrade check is timing out on collectors? ,"
+If SL1 is stuck with the message ""Update Manager Running"" , these steps will show you how to Stop/
+Reset Pre-Upgrade.
+Example:
+Procedure
+Task 1: SSH to the CDB or DE for your SL1 instance.
+Step 1:  Enter MySQL
+silo_mysql
+Example:
+[root@emurillo-8-14-AIO ~]# silo_mysql
+Welcome to the MariaDB monitor. Commands end with ; or \g.
+Your MariaDB connection id is 9124143
+Server version: 10.4.18-MariaDB-log MariaDB Server
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+MariaDB [(none)]>
+Task 2: Find (sid)
+Step 1:  select max(sid) from siloupdate.preupgrade_schedule;
+Example:
+MariaDB [siloupdate]> select max(sid) from siloupdate.preupgrade_schedule;
++----------+
+| max(sid) |
++----------+
+| 12 |
++----------+
+1 row in set (0.000 sec)
+patch.PNG
+•
+◦
+• 
+Task 3: Update Appliance Pre-Upgrade
+Step 1: update siloupdate.appliance_preupgrade set state=4 where sid=x;
+Example:
+MariaDB [siloupdate]> update siloupdate.appliance_preupgrade set state=4 where sid=12;
+Query OK, 10 rows affected (0.000 sec)
+Rows matched: 10 Changed: 10 Warnings: 0
+MariaDB [siloupdate]> select * from siloupdate.appliance_preupgrade;
+Task 4: Update Pre-Upgrade Schedule
+Step 1: update siloupdate.preupgrade_schedule set state=4 where sid=x;",How To Stop:Reset Pre-Upgrade when process is stuck Upgrading,,,
+73,How do I change Virtual IP on HA cluster? ,"To change the Virtual IP address, login to the Primary database node and put the node into Maintenance mode using coro_config command. Then run ""crm config edit virtual_ip"" modify the IP and save the changes. Take the cluster out of maintenance using coro_config command. For detailed steps follow KB 15590: ",sciencelogic_sysadmin_12-5-4,,,
+74,Why DR backup is failing? ,"It could be because pacemaker service is stopped on DR node. Check if pacemaker is running on DR node using ""sudo systemctl status pacemaker"" command. To addresss that start the service using ""sudo systemctl start pacemaker"". KB 16004 contains more details about the issue.",DR Backup results in _Parse error in DRBD config_,,,
+75,Why my inbound email processing is not working? ,"You might be hitting a known issue described in KB 16299. Please try to go to the System > Settings > Email page, click save and see if that resolves the issue.","[MAJOR] Inbound Email no longer works after updating to 12.2.1.2, Debugging and testing the inbound email configuration",,,
+76,What are the commands to check the cluster that uses a quorum-witness node? ,"Some common commands are described in KB 16279. Here are examples:
+On CDB Nodes
+shows the resource status: ""crm_mon""
+shows quorum status: ""corosync-quorumtool""
+shows if members are joined to the rings: ""corosync-cmapctl | grep members""
+shows status of quorum device: ""corosync-qdevice-tool -s""
+On AP Quorum witness
+shows number of connected clients: ""corosync-qnetd-tool -s""
+shows connected clients, member node list and vote status: ""corosync-qnetd-tool -l""",Checking AP Quorum witness status and failure behavior,,,
+77,Why Filesystem report erroneously shows utilization above 100%? ,"When generating the Reports > Run Report > Storage > File System Report, you see values under Available (%) and/or Used (%) above 100% if the report is generated in ODS format and it is opened with Excel. When a user on Windows opens an .ODS report in MS Office, the percentage values are incorrectly multiplied by 100. This is a compatibility issue with Windows. For this reason, we recommend that Windows users use the XLSX format instead of the ODS format.",Database Partition Full,,,
+78,Getting Error Code 3 when running a Configuration backup. How do I fix that? ,"You might hit an issue from KB 16350, where you need to increase max_allowed_packet value to 256M in /etc/my.cnf.d/mysql-client.cnf file, in [mysqldump] section.",Config backup fails with Error Code 3,,,
+79,How do I know when my SL1 license is going to expire? ,"You can run a query from System > Tools > DB Tool page that looks like this: ""select id, name, ip, descr, qty, expiration from master.system_settings_licenses where function=2;""","How do I see the license expiration data on my SL1 system?, sciencelogic_ha_and_dr_12-3-0",,,
+80,Why do I have PowerShell Kerberos timeout issues every 4 hours? ,It could be because of a known issue when pypsrp is enabled. Recommendation is to upgrade to 12.2.2+ or 12.3.0 release. Workaround is to revert to the old pywinrm module using this query: UPDATE master.system_custom_config set field_value = 0 WHERE field = 'enable_pypsrp_lib';,[MINOR] PowerShell - Kerberos Timeout errors every 4 hours,,,
+81,Duplicated question: How do I resolve Split-Brain on OL8 appliances?,"How do I fix it?
+Make sure that the drbd resource is up, if it is down due to split brain. You will see this
+[em7admin@ha02-node ~]$ drbdadm status
+# No currently configured DRBD found.
+Start the resource by executing
+sudo drbdadm up r0
+If both devices are currently primary, demote the one that should be a secondary DB via the command (Demote DR node by using ""coro_config""): 
+sudo drbdadm secondary r0
+If the above command does not work, then run:
+sudo drbdadm secondary r0 --force
+If both nodes are currently secondary, promote the one that should be a primary DB via the command (Promote DR node by using ""coro_config""): 
+sudo drbdadm primary r0
+If the above command does not work, then run: 
+sudo drbdadm primary r0 --force
+Once their roles are defined, the secondary node will need to discard all of its synchronized data and accept that the primary is the definitive source.  Please make sure you run the command below only if you are certain that you are running it on the Secondary DB. Therefore, on the secondary node, run the command: 
+sudo drbdadm connect --discard-my-data r0
+Then, on the primary node, run the command: 
+sudo drbdadm connect r0
+Check if the nodes are connected and synchronizing by running the command: 
+drbdadm status
+ 
+Running the commands above will connect both nodes at the same time if your SL1 is in a HA+DR cluster. If you want to connect or disconnect a specific node, then you will need to specify which node you want to perform the action on. Using the following example:
+ 
+r0 role:Primary
+  disk:UpToDate open:yes
+  dr-node role:Secondary
+    peer-disk:UpToDate
+  ha02-node role:Secondary
+    peer-disk:UpToDate
+
+To disconnect and connect the dr-node peer, run the commands (make sure you replace dr-node with the actual hostname of the peer in your cluster):
+sudo drbdadm disconnect r0:dr-node
+
+sudo drbdadm connect r0:dr-node
+To disconnect and connect the ha02-node peer, run the commands (make sure you replace ha02-nodewith the actual hostname of the peer in your cluster):sudo drbdadm disconnect r0:ha02-node
+
+sudo drbdadm connect r0:ha02-node","Resolving Split-Brain in OL8, sciencelogic_ha_and_dr_12-3-0",,,
+82,"Why backup fails to NFS share with ""permission denied"" error? ",Follow the steps in KB 14664. Review blog post here that explaind how to setup an NFS server for SL1 backups: https://community.sciencelogic.com/blog/pro-services-blog/how-to-set-up-an-nfs-server-for-sl1-backups/3025,Backup fails to NFS server - Permission denied,,,
+83,Can I share SL1 appliances between 2 stacks? ,It is not possible to for a message collector or data collector to be part of more than one SL1 stack at any one time.Reference KB 9929,"Can an SL1 appliance be shared between stacks?, sciencelogic_ha_and_dr_12-3-0",,,
+84,Do you have an FAQ for python 3 migration? ,"Yes, check KB 12014: 
+
+
+SummaryPython 3 Migration FAQ
+Article DetailsWhat is the Python 3 migration? SL1 is transitioning away from supporting Python 2 and switching to Python 3. All PowerPacks and custom content must also migrate from Python 2 to Python 3 as well.
+
+Why is ScienceLogic moving away from Python 2? Python 2 is no longer supported. This means that if there is a bug or security problem on Python 2, it may be very difficult to address that problem in a timely manner. In addition, open source components are also dropping support for Python 2 and moving to Python 3.
+
+When will Python 2 go away? The core SL1 Platform will switch to Python 3 with the v12.3 release. However, ScienceLogic will still include Python 2 in parallel with Python 3 until Q2 2025.
+
+What do I need to do about this? ScienceLogic is going to proactively migrate the product and the PowerPacks we support to Python 3. However, any custom content to include customer created PowerPacks must be recreated utilizing ScienceLogic provided enablement tools or migrated to Python 3 before Q2 2025.
+
+How do I migrate my content to Python 3? Please see the documentation on Custom Content/PowerPacks - Migrating Content to Python 3 .
+
+How do I know if I have custom content? ScienceLogic has provided a SL1: System Upgrade Assessment to scan your SL1 installation for Python content. This tool provides an easy-to-use report that identifies custom content.
+
+What are my options to migrate to Python 3? There are two different approaches to migrating to Python 3 to consider:
+a. For REST API and CLI - based connections, download and utilize the ScienceLogic low-code enablement tools (CLI/SSH Toolkit, REST Toolkit). This process will replace your current PowerPacks containing Python 2 code. This is the highly preferred approach.
+b. Migrate custom snippet content from Python 2 to Python 3 and convert any custom Python libraries to Python 3. This approach is appropriate only when there is a heavy investment in non-Snippet Framework based custom code. Open-source tools exist to expedite but not totally automate this process.
+
+
+
+What will happen to the community packs? Because these PowerPacks are not officially supported they will not be included in the Python 3 conversion effort. Most of these community PowerPacks, if used, have some degree of customer-specific customization. However, utilizing the CLI/SSH Toolkit or REST Toolkit, they can be recreated as needed.",Python 3 Migration FAQ,,,
+85,"Where is ""Force Secure HTTPS"" option? ","As of SL1 version 12.2.0, HTTPS is enforced by default. And that option is no longer available to configure.",When Configuring SL1 to Use Only HTTPS - the Force Secure HTTPS option is not present,,,
+86,I have issues with Subscription Billing. What should I do? ,"Please use test_subscription.sh script in the KB 1168 that should help validate the configuration. The test_subscription.sh script (attached to this KBA) can be
+used from the CDB to validate the configurationNOTE: the test_subscription script has not been updated to handle the new billing API
+changes that were implemented on July 2nd, 2025",Troubleshooting Subscription Billing,,,
+87,I am hitting Report Format Conversion Failed error when generating a Report,"It could be a known issue form KB 4901.
+You''re encountering the ""Report Format Conversion Failed"" error when generating a report. Here’s what’s likely happening and how to fix it quickly:
+- Root Cause
+This error typically occurs when the system fails to convert an .ods (OpenDocument Spreadsheet) report into your desired format (.xlsx, .pdf, .html) due to:
+
+A missing or corrupted php-fpm service
+Missing /tmp directories used by the conversion process
+A recent reboot or upgrade (especially in versions 12.1.2+)
+- Immediate Fix (Try This First)
+Run this command on the Appliance where reports are generated:
+
+sudo systemctl restart php-fpm
+This often resolves the issue immediately, especially after a reboot or upgrade.
+
+If the Problem Persists: Check /tmp Directories
+SSH into the appliance.
+
+Run:
+
+cd /tmp
+ls -al | grep php
+Look for a directory like:
+
+drwx------   3 root    root    17 Feb 19 12:50 systemdprivate-8c107f7e8ab943b6997b7adf8af54db2-php-fpm
+If it’s missing:
+
+Restart php-fpm again (as above).
+The system should recreate it automatically.
+",Report_Format_Conversion,,,
+88,How to configure SNMPv3 traps with Juniper devices? ,"For JUNOS devices you need to add SL1 appliance engine ID into the Juniper device configuration. To get engine ID form SL1 appliance you can use command below:
+snmpget -v 3 -u em7defaultv3 -l authPriv -a MD5 -A em7authpass -x DES -X em7privpass localhost 1.3.6.1.6.3.10.2.1.1.0",How to Receive SNMP v3 Traps From Juniper Devices,,,
+89,Why my scheduled tasks are not running in Restorepoint? ,Make sure that the schedule is not paused in the Info > Schedule page.,restorepoint-userguide-56,,,
+90,How to configure SSO with Azure SSO in RestorePoint? ,"Please follow steps documented here: https://docs.sciencelogic.com/restorepoint/latest/Content/Web_Restorepoint/15_SAML.html
+
+A concise guide to configure SSO with Azure AD in RestorePoint:
+
+Step 1: Configure Azure AD (IdP)
+Go to Azure Portal > Enterprise Applications > New Application.
+Search for """"Azure AD SAML Toolkit"""", select it, and create the app (e.g., ScienceLogic SL1 Production SSO).
+Navigate to Single sign-on (SAML) > Basic SAML Configuration:
+Identifier (Entity ID):
+https://<your_SL1_domain>/samlsp.em7?action=metadata
+Reply URL (ACS URL):
+https://<your_SL1_domain>/samlsp.em7?action=acs
+Sign On URL:
+https://<your_SL1_domain>
+Save the settings.
+Assign users/groups under Users and groups > Add user/group.
+Collect these values from the SAML Certificates and Single sign-on pages:
+IdP SSO URL: Login URL
+IdP Entity ID: Azure AD Identifier
+IdP SLS URL: Logout URL
+IdP Certificate (Base64): Download and copy the full certificate
+IdP Cert Fingerprint: From the certificate thumbprint
+Step 2: Configure RestorePoint (SP)
+Go to Administration > Auth Servers > SAML.
+Fill in the fields using data from Azure AD:
+ACS URL: https://<your_SL1_domain>/samlsp.em7?action=acs
+Entity ID: https://<your_SL1_domain>/samlsp.em7?action=metadata
+IdP Metadata: Paste the full SAML metadata XML (from Azure AD) or use the individual fields:
+IdP SSO URL
+IdP Entity ID
+IdP SLS URL
+IdP Certificate (Base64)
+IdP Cert Fingerprint
+Optional: Map claims:
+Email Claim: e.g., email
+Given Name Claim: e.g., givenName
+Surname Claim: e.g., surname
+Groups Claim: e.g., groups
+Click Save.
+Step 3: Create Authentication Profile
+Go to Administration > Authentication > Profile.
+Create a new profile:
+Profile Name: e.g., Azure AD SSO
+AP Hostname Pattern: https://<your_SL1_domain>
+Move EM7 Login Page and HTTP Auth to Aligned Credential Sources
+Add your SAML resource to Aligned Authentication Resources
+Save the profile.
+Step 4: Test SSO
+Open an Incognito/Private window.
+Navigate to https://<your_SL1_domain>.
+Click Login with SSO.
+You should be redirected to Azure AD.
+After login, you should be redirected back to RestorePoint.
+---  Note: If login loops, restart the nextui service:
+
+sudo systemctl restart nextui
+sudo systemctl status nextui
+Optional: Dynamic Policy Alignment
+In Azure AD, go to Enterprise Application > Single sign-on > Attributes & Claims.
+Add custom claims (e.g., group, role) and map them to SL1.
+Use these in SAML Group mappings in RestorePoint.
+Important Limitations
+--- RestorePoint does not support encrypted SAML assertions.","Single Sign On Configuration with Azure Active Directory, saml_guide",,,
+91,How to disable automatic updates in Restorepoint? ,"1. Navigate to Administration - System Settings - Appliance
+2. Check the box(es) Disable Automatic Version Upgrades and/or Disable Automatic Minor Upgrades
+Refer to KB 12385",restorepoint-userguide-56,,,
+92,How to fix scheduler service segfault issue? ,You might hit a known issue in KB 15711. We recommend to ugrade to 12.3.0 release. However a manual drop-file workaround is documented in the KB.,[MAJOR] Scheduler service is segfaulting after upgrade,,,
+93,"How do I address ""Failed to store the result of ModuleCmdStorage"" issue? ","Upgrade to 12.2.5, 12.3.1 or newer release. If an upgrade is not an option, please open a Support Incident case to see if a drop file workaround can be provided. Please mention EM-67223 and this KB ID, when opening the case.",[MINOR] Failed to store the result of ModuleCmdStorage,,,
+94,How do I copy text from a TMUX session? ,"From KB 15917.
+For Windows Users:
+In Windows holding the SHIFT key as a modifier will usually allow copy/paste to work again.
+For Linux GUI Users:
+In Linux holding the SHIFT key as a modifier will usually allow copy/paste to work again.
+For Paste: Hold the SHIFT key and right-click then select paste
+For Mac Users:
+In Mac holding the ""fn"" (function) or ""option"" key as a modifier will usually allow copy/paste to work again.
+For Copy: Hold the ""fn"" (function) key to highlight the text, then press CMD + C to copy
+Note: Some applications like ""AWS Session Manager"" require holding the ""option"" key instead to highlight text
+For Paste: Paste works normally and only requires pressing CMD + V",Unable to Copy or Paste Text in SSH Sessions on SL1 v12.2+,,,
+95,Why some devices have partially discovered interfaces?,"You might hit a known issue infrom KB 15964 if you are runnig on versions older than 12.3.0, 12.5.0, and 12.2.3: 
+Issue
+This issue affects the Interface monitoring on end devices and the Interface Reporting. It was reported
+on all devices monitored in SL1, where Interfaces were partially discovered. It was reported on 12.1.1
+OL7 and 12.2.0 OL8 versions.
+Details
+Interface discovery gets terminated with an exception error, Running the discovery process in debug
+mode will have an expectation while IF discovery is running on end device.
+Steps To Reproduce
+Review the discover_ip_range.log (Discovery Auto) for the reported DID, It was trying to discover the
+Interface after a specific Ifindex 305 it got an exception error and skipped discovering new Interfaces.
+ You might see that the stack has Nightly Discovery, Interface bandwidth and Dynamic App. collection
+processes SIGTERMs and terminations.
+Workaround
+Perform the below steps and raise a support case with logs.
+1- Enable debug on the Discovery Auto, Discovery Detail and Discovery Nightly update processes
+2- From the device properties click binocular icon to rediscover the problematic device
+3- Let the device ran through nightly discovery process and capture all the logs from the collectors next day
+tar -czvf /tmp/case#.logs /var/log/sl1/discover*
+Engineering team will review the logs to see if any other traceback errors or exceptions are present
+and will provide the drop-file accordingly as a workaround.
+Fix
+The fix is targeted in the future releases 12.3.0, 12.5.0, and 12.2.3",[MINOR] Interfaces partially discovered on end device,,,
+96,Did you change alerting related to Oracle Database Tablespace monitoring? ,"Yes, in v106 of the PowerPack. Details are in KB 16124",How Alerts to Monitor Tablespace Size Have Changed in the Oracle: Database PowerPack v106,,,
+97,Is there an ISO that I should use for newer Dell hardware? ,There is an ISO that is linked in the KB 16463 that might contain newner drivers and have a higher success on newer Dell hardware.,[NOTICE] ISOs may not have the drivers necessary to support current Dell hardware,,,
+98,Why NFS-remote option is not working for backups? ,Please check if you have username/password field populated in the credentials that you use for NFS -remote backups. Remove those if that is the case. You might be hitting an issue in KB 16502 that is targeted to be fixed in 12.5.0.,[MAJOR] DR Full_Config backup is not triggering for NFS-remote,,,
+99,Why Ctaskman service keep crashing with a deadlock? ,"You might hit an issue if you are running on releases older than 12.5.0 and 12.3.2. Details are in KB 16494. This is not a critical issue, as the service simply restarts. To resolve it, you will need to update to a version that includes the fix.
+
+
+
+Ctaskman service keep crashing. 
+Could see the below critical unhandled Exception in System Logs. 
+2024-12-13T11:02:34.713269+00:00 localhost silo.em7_ctaskman.68[3983075]: CRITICAL proc_pda.__init__ 262 Unhandled exception on appliance: 237, process Enterprise Database: Collector Task Manager:#012Traceback(most recent call last):
+#012  File ""/opt/em7/backend/process/proc_pda.py"", line 231, in __init__
+#012  File ""/opt/em7/backend/silo_db/c_task_manager.py"", line 588, in main
+#012  File ""/opt/em7/backend/silo_db/c_task_manager.py"", line 509, in do_general_tasks
+#012  File ""/opt/em7/backend/silo_db/c_task_manager.py"", line 329, in cug_realign
+#012  File ""/opt/em7/backend/silo_common/appliance_mgmt.py"", line 1227, in align_orphan_devices
+#012  File ""/opt/em7/backend/silo_common/database.py"", line 126, in callFunc
+#012  File ""/opt/em7/backend/silo_common/database.py"", line 534, in execute
+#012  File ""/opt/em7/lib/python/mysqlclient-1.3.7-py2.7-linux-x86_64.egg/MySQLdb/cursors.py"", line 226, in execute
+#012    self.errorhandler(self, exc, value)
+#012  File ""/opt/em7/lib/python/mysqlclient-1.3.7-py2.7-linux-x86_64.egg/MySQLdb/connections.py"", line 36, in defaulterrorhandler
+#012    raise errorvalue#012OperationalError: (1213, 'Deadlock found when trying to get lock; try restarting transaction')
+
+Workaround:
+
+This is not a critical issue, as the service simply restarts. To resolve it, you will need to update to a version that includes the fix.
+The fix will be in 12.5.0, that will be releasing in a few weeks. 
+Fix
+Targeted for a fix in a future release v12.5.0 and 12.3.2. (Engineering Request EM-71439)
+",ENG-Collector Task Manager-031025-001913,,,
+,,,,,,
+,,,,,,
+,,,,,,

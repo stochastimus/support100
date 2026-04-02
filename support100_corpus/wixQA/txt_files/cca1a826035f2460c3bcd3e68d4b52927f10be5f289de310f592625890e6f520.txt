@@ -1,0 +1,18 @@
+Viewing and Managing Your Site History
+Your site history is a record of every time that you (or someone working on your site) has saved or published within your Editor. You can access your site history to check when a change was made, who performed the change or to restore a previous version.
+
+        Click to go to site history
+    
+
+
+        View site history
+      
+
+Viewing your site historyYou can access your site history from your Editor or site's dashboard.Wix EditorStudio EditorDashboard
+Click Site on the top of the Editor. Click Site History.
+Click Go to Site History. 
+Click the Wix Studio logo on the top left of the Studio Editor. Click Site. Click Site History.
+Go to Site & App in your site's dashboard. Scroll down and click Site History.Once there, you can browse through the recent revisions to your site, see who made the changes and when they were made. Click the Arrow icon  next to the version you want to view.Restoring an older site versionRevert your site back by restoring a previously saved or published version. Keep in mind that restoring a version erases any changes made after that specific version.Important: When you restore your site, some elements are not affected. To restore a site version:
+Go to your site history. Click the Arrow icon  next to the relevant version. Review the revision to make sure it's the one you want to restore. Click Restore.Tips:
+To filter site history, click the Show drop-down menu. You can filter to find saved, published, and starred versions. To find a specific site version again in the future, click the Rename icon , and give it a memorable name.Viewing site changes by collaboratorsYou can use site history to see which collaborators made changes your site. When a version is saved, it is date and time stamped, and includes the email of person who performed the update.To view site changes made by collaborators:
+Go to your site history. View the collaborator's email address on the relevant version.

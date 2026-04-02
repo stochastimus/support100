@@ -1,0 +1,6 @@
+Wix Editor: Adding, Renaming and Deleting an Anchor
+Anchors are an easy way to direct people to the bits of your site that matter most. You can add as many anchors as you need and rename them to easily recognize each one. In this article, learn more about:
+Adding an anchor Renaming an anchor Deleting an anchorAdding an anchorAdd anchors to important parts of your site. Then, link elements and menu items to your anchors so that visitors can easily access those sections. To add an anchor:
+Go to your editor. Click Add Elements  on the left side of the editor. Click Menu & Anchor . Click Anchor under In-Page Navigation, or drag it to the relevant location on your page.Note:It is not possible to add an anchor to your page's footer. Renaming an anchorAfter creating a new anchor, give it a name that you can recognize. Naming your anchors helps to differentiate between them, especially when they're linked to elements. These names are also visible to your site visitors if you add an anchor menu. To rename an anchor:
+Go to your editor. Click the anchor.  Click Rename. Type the name of your anchor. Press Enter on your keyboard.Delete an anchorYou can always delete anchors that you no longer need. To delete an anchor:
+Go to your editor. Right-click on the anchor you wish to delete.  Click Delete. 

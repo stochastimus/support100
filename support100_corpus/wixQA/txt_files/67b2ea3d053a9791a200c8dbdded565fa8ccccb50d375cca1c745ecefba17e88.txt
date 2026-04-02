@@ -1,0 +1,10 @@
+Clearing Your Browser's Cache
+Your browser caches data about each website you visit to speed up loading times. Over time, the actual data online can differ from what your browser has cached, potentially causing local issues. Clear your browser's cache periodically and whenever you experience website issues.Before clearing cache:Open your browser in incognito/private mode to see if the issue is cache related. If the problem is resolved in incognito mode, follow the steps to clear your browser's cache.To clear your browser's cache:
+Close all windows and tabs of your browser. Open a new tab, ensuring Wix.com is not open. Follow the steps for your browser below:ChromeFirefoxSafariEdge
+Press Ctrl + Shift + Del (press Cmd + Shift + Delete using a Mac). Click the drop-down next to Time range and select All time. Make sure the box is checked next to Cached images and files. Click Clear data.
+Close and reopen Chrome. 
+Press Ctrl + Shift + Del (press Cmd + Shift + Delete using a Mac). Click the drop-down next to Time range to clear: and select Everything.  Make sure the box is checked next to Cache. Click Clear now.
+Close and reopen Firefox. 
+Press Cmd + , to open Preferences.  Click the Advanced tab.  Check the box next to Show Develop menu in menu bar (at the bottom of the window). Click Develop in Safari's menu bar.  Click Empty Caches.
+Close and reopen Safari. 
+Press Ctrl + Shift + Del (press Cmd + Shift + Delete using a Mac). Make sure the box is checked next to Cached data and files and click Clear.  Close and reopen Microsoft Edge. Note:Wix supports viewing live sites on Microsoft Edge, however, we do not support the ADI builder on Microsoft Edge.Still experiencing issues after clearing cache?Try flushing your system's DNS. If this doesn't resolve the issues, follow the instructions for disabling add-ons and extensions in the Wix Technical Assistant. Note:Wix no longer supports live sites on IE11. We recommend using one of our supported browsers to view and edit your site. 

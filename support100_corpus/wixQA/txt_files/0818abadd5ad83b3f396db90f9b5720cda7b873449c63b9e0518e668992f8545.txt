@@ -1,0 +1,10 @@
+Wix Video: Autoplay for Videos
+Set your videos to autoplay when the page loads.To enable or disable autoplay in Wix Video:
+Go to your editor. Click the Wix Video player on your page. Click Settings. Click the Player tab. Click the Autoplay on load toggle:
+    
+Enabled: Your videos play automatically when the page loads. Disable: Visitors have to click to play the videos.  Note:Videos set to autoplay always start on mute due to browser restrictions.Using autoplay with the strip and slider layoutsThe Autoplay on load toggle is not available for the strip and slider layouts. You can get a similar effect in strip layout using the following workaround:
+Go to Video Library in your site's dashboard. Click Channels on the left. Select the channel that you want to play automatically. Click Edit on the right.   
+5.  Under Channel cover, click Upload or Change.6.  Add the video or GIF file the that you want to autoplay.7.  Click Save on the top right.
+Select the channel with the automatically playing cover to appear in the Wix Video player on your site:
+Go to your editor. Click the Wix Video player on your page. Click Settings. Select the channel that you updated with the automatically playing cover video. In the Player tab, select Channel cover under "What to show in frame"?
+Note: Only GIF files will work on your mobile site.

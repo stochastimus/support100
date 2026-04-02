@@ -1,0 +1,192 @@
+Completing Your Wix Payments Account Setup
+After connecting to Wix Payments as your payment provider, you can begin receiving payments through your site immediately. However, in order for Wix Payments to send a payout to your bank account, you must complete the setup process within 30 days from receiving your first payment.Important:If you do not complete account setup within 30 days, your Wix Payments account will be suspended and you will not be able to accept any more payments through your site.If you do not complete account setup within 60 days, previous transactions (if any) will be refunded to your customers.  Completing your Wix Payments account setup
+Go to Accept Payments in your site's dashboard. Click Complete Setup under Wix Payments. 
+Select an option under Business Type:
+Note: It is not possible to switch between business types once you select one. 
+    
+Individual/Sole Proprietorship: Select this option if you are doing business as an individual. Partnership/LLC/Corporation/NGO: Select this option if you are doing business as a business entity. Regional account types: In some countries, other business types may be selected which align with local business definitions.   Depending on the selected business type, follow the steps: Individual/Sole Proprietorship
+Enter Your Personal Details:
+    
+Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) If asked, enter your job title (role in the business)   Enter Your Address Details:
+    
+Your address and phone number (If you don’t have a business address, you can use your home address) Upload an address verification document, such as a utility bill, to confirm your address. The document must have been issued within the last 6 months   Add Your Business Description:
+    
+Enter your "Doing Business As" name. This is how your business appears on customers' statements. 
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")   Use the dropdown menu to select your Industry Use the text box to add a short description of your products / services   Enter Your Bank Details:
+    
+Enter your personal bank account's details according to your country's requirements Upload a color copy of your statement, or other document from your bank, to verify your bank details   Click the checkbox to accept our terms and conditions, service fees and, if required, consent for identity check. Click Submit.Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal information correctly:
+Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name Your first / middle / last name and your date of birth must match those listed in your photo IDPartnership/LLC/Corporation/NGO
+Enter Your Business Information:
+    
+Your legal business name Enter your "Doing Business As" name. This is how your business appears on customers' statements.
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")   Your company registration number / business number / Employer Identification Number (EIN) / Unique Taxpayer Reference (UTR) number (If applicable) Enter VAT  / tax number Upload a company registration document to help us verify your business (Tax ID / EIN / Registration Number) Is your business 100% owned by a publicly traded parent company?
+        
+Yes: Select this option and enter the parent company market identifier code and Stock Number. No: Select this option and move on.     Enter Your Company Address:
+    
+Your business address Your business phone number Is the principal place of business address the same as the registered business address?
+        
+Yes: Select this option and move on. No: Select this option and enter the alternative address and business phone number.   If requested, answer whether the business phone number is the same as the business number for customer support?
+        
+Yes: Select this option and move on. No: Select this option and enter the alternative business phone number.   If requested, upload an address verification document, such as a utility bill, to confirm your address. The document must have been issued within the last 6 months   Enter Account Representative and Business Owner details (as the person setting up the account):
+    
+Your country of residence Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) Your address and phone number   Select the checkboxes:
+    
+Do you own 25% or more of the business?:
+        
+Yes: Select this option if you're a shareholder with 25% or more of the company. No: Select this option if you own less than 25% (or don't own the business).   Do you have a significant role in managing the business?:
+        
+Yes: Select this option if you hold a position with control over company management (e.g. CEO, CFO, Treasurer, Chairperson, etc.) No: Select this option if your position doesn't involve company management.     Click + Add Business Owner to add the following:
+    
+Anyone who owns 25% or more of the business At least one person with significant responsibility over company management. Learn More   Enter your Bank Details:
+    
+Enter your business bank account's details according to your country's requirements Upload a color copy of a statement, or other document from your bank, to verify your bank details   Click the checkbox to accept our terms and conditions, service fees and, if required, consent for identity check. Click Submit.Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal and company information correctly:
+Your first / middle / last name, and your date of birth, must match those listed in your photo ID
+Your company's name and its registration number/tax ID must match the company's registered information Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name Upload a document that proves the validity and ownership of the VAT ID/Business ID/Tax ID/EIN during registration Confirm that the Legal Business Name, Shareholder and VAT ID/Business ID/Tax ID/EIN entered in the form matches those associated with your business bank account.Sole Proprietor (United Kingdom)
+Enter your Business Information:
+    
+Your legal business name Your company registration / Unique Taxpayer Reference (UTR) number Enter your "Doing Business As" name. This is how your business appears on customers' statements.
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")   Upload a company registration document to help us verify your business   Add your Business Description:
+    
+Use the dropdown menu to select your industry type Use the text box to add a short description of your products / services   Enter your Address Details:
+    
+Your address and phone number (If you don’t have a business address, you can use your home address) Let us know whether your company's registered address is the same as the principal place of business. Enter Business Owner details (as the person setting up the account): Your country of residence Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) Let us know whether your personal address is the same as the company's registered address.   Enter your Bank Account Details:
+    
+The bank account should be the same account you use for your business. Enter your business bank account's sort code and account number Upload a color copy of a statement, or other document from your bank, to verify your bank details   Click the checkbox to accept our terms and conditions and service fees. Click Submit.
+Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal information correctly:
+Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name Your first / middle / last name and your date of birth must match those listed in your photo ID Your company's name and its registration number (UTR) must match the company's registered information Upload a document that proves the validity and ownership of the company registration number (UTR) during registration Confirm that the Legal Business Name and company registration number (UTR) entered in the form matches those associated with your business bank account.Sole Proprietor (Italy)
+Enter your Business Information:
+    
+Your legal business name Your company registration / codice fiscale number Enter your "Doing Business As" name. This is how your business appears on customers' statements.
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")   Upload a company registration document to help us verify your business   Add your Business Description:
+    
+Use the dropdown menu to select your industry type Use the text box to add a short description of your products / services   Enter your Company Address details:
+    
+Your address (this is the address where your company is legally registered) and phone number Let us know whether your company's registered address is the same as the principal place of business   Enter Business Owner details (as the person setting up the account):
+    
+Your country of residence Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) Let us know whether your personal address is the same as the company's registered address.   Enter your Bank Account details:
+    
+You can use a business or personal bank account Upload a color copy of a statement, or other document from your bank, to verify your bank details   Click the checkbox to accept our terms and conditions and service fees. Click Submit.
+Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal information correctly:
+Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name Your first / middle / last name and your date of birth must match those listed in your photo ID Your company's name and its registration number (UTR) must match the company's registered information Upload a document that proves the validity and ownership of the codice fiscale during registration Confirm that the Legal Business Name and codice fiscale entered in the form matches those associated with your bank account.Sole Proprietor (Switzerland)
+Enter your Business Information:
+    
+Your legal business name (If applicable) Your BID / UID number Enter your "Doing Business As" name. This is how your business appears on customers' statements.
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")   Upload a company registration document to help us verify your business   Add your Business Description:
+    
+Use the dropdown menu to select your industry type Use the text box to add a short description of your products / services   Enter your Company Address details:
+    
+Your address (this is the address where your company is legally registered) and phone number Let us know whether your company's registered address is the same as the principal place of business   Enter Business Owner details (as the person setting up the account):
+    
+Your country of residence Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) Let us know whether your personal address is the same as the company's registered address.   Enter your Bank Account details:
+    
+You can use a business or personal bank account Upload a color copy of a statement, or other document from your bank, to verify your bank details   Click the checkbox to accept our terms and conditions and service fees. Click Submit.
+Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal information correctly:
+Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name Your first / middle / last name and your date of birth must match those listed in your photo ID Your company's name and its registration number (UTR) must match the company's registered information Upload a document that proves the validity and ownership of the BID / UID number during registration Confirm that the Legal Business Name and BID / UID number entered in the form matches those associated with your bank account.Partnership/Association (Germany)
+Enter Your Business Information:
+    
+Your legal business name Enter your "Doing Business As" name. This is how your business appears on customers' statements.
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")   Enter VAT / tax number (If applicable) Enter your Handelsregisternummer Upload a company registration document to help us verify your business    Add your Business Description:
+    
+Use the dropdown menu to select your industry type Use the text box to add a short description of your products / services   Enter Your Company Address:
+    
+Your business address Your business phone number Is the principal place of business address the same as the registered business address?
+        
+Yes: Select this option and move on. No: Select this option and enter the alternative address and business phone number.     Enter Account Representative and Business Owner details (as the person setting up the account):
+    
+Your country of residence Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) Your address and business phone number   Select the checkboxes:
+    
+Do you own 25% or more of the business?:
+        
+Yes: Select this option if you're a shareholder with 25% or more of the company. No: Select this option if you own less than 25% (or don't own the business).   Do you have a significant responsibility for managing the business?:
+        
+Yes: Select this option if you hold a position with control over company management (e.g. CEO, CFO, Treasurer, Chairperson, etc.) No: Select this option if your position doesn't involve company management.   Enter your job title   Click + Add Business Owner to add the following:
+    
+Anyone who owns 25% or more of the business At least one person with significant responsibility over company management. Learn More   Enter your Bank Details:
+    
+Enter your business bank account's details Upload a color copy of a statement, or other document from your bank, to verify your bank details   Click the checkbox to accept our terms and conditions and service fees. Click Submit.Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal and company information correctly:
+Your first / middle / last name, and your date of birth, must match those listed in your photo ID
+Your company's name and its registration number/tax ID must match the company's registered information Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name Upload a document that proves the validity and ownership of the VAT ID/Business ID/Tax ID/EIN during registration Confirm that the Legal Business Name, Shareholder and VAT ID/Business ID/Tax ID/EIN entered in the form matches those associated with your business bank account.Partnership (Austria)
+Enter Your Business Information:
+    
+Your legal business name Enter your "Doing Business As" name. This is how your business appears on customers' statements.
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")   Enter VAT / tax number (If applicable) Enter your Firmenbuchnummer Upload a company registration document to help us verify your business    Add your Business Description:
+    
+Use the dropdown menu to select your industry type Use the text box to add a short description of your products / services   Enter Your Company Address:
+    
+Your business address Your business phone number Is the principal place of business address the same as the registered business address?
+        
+Yes: Select this option and move on. No: Select this option and enter the alternative address and business phone number.     Enter Account Representative and Business Owner details (as the person setting up the account):
+    
+Your country of residence Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) Your address and business phone number   Select the checkboxes:
+    
+Do you own 25% or more of the business?:
+        
+Yes: Select this option if you're a shareholder with 25% or more of the company. No: Select this option if you own less than 25% (or don't own the business).   Do you have a significant responsibility for managing the business?:
+        
+Yes: Select this option if you hold a position with control over company management (e.g. CEO, CFO, Treasurer, Chairperson, etc.) No: Select this option if your position doesn't involve company management.   Enter your job title   Click + Add Business Owner to add the following:
+    
+Anyone who owns 25% or more of the business At least one person with significant responsibility over company management. Learn More   Enter your Bank Details:
+    
+Enter your business bank account's details Upload a color copy of a statement, or other document from your bank, to verify your bank details   Click the checkbox to accept our terms and conditions and service fees. Click Submit.Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal and company information correctly:
+Your first / middle / last name, and your date of birth, must match those listed in your photo ID
+Your company's name and its registration number/tax ID must match the company's registered information Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name Upload a document that proves the validity and ownership of the VAT ID/Business ID/Tax ID/EIN during registration Confirm that the Legal Business Name, Shareholder and VAT ID/Business ID/Tax ID/EIN entered in the form matches those associated with your business bank account.Association (Austria)
+Enter Your Business Information:
+    
+Your legal business name Enter your "Doing Business As" name. This is how your business appears on customers' statements.
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")   Enter VAT / tax number (If applicable) Enter your ZVR number Upload a company registration document to help us verify your business    Add your Business Description:
+    
+Use the dropdown menu to select your industry type Use the text box to add a short description of your products / services   Enter Your Company Address:
+    
+Your business address Your business phone number Is the principal place of business address the same as the registered business address?
+        
+Yes: Select this option and move on. No: Select this option and enter the alternative address and business phone number.     Enter Account Representative and Business Owner details (as the person setting up the account):
+    
+Your country of residence Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) Your address and business phone number   Select the checkboxes:
+    
+Do you own 25% or more of the business?:
+        
+Yes: Select this option if you're a shareholder with 25% or more of the company. No: Select this option if you own less than 25% (or don't own the business).   Do you have a significant responsibility for managing the business?:
+        
+Yes: Select this option if you hold a position with control over company management (e.g. CEO, CFO, Treasurer, Chairperson, etc.) No: Select this option if your position doesn't involve company management.   Enter your job title   Click + Add Business Owner to add the following:
+    
+Anyone who owns 25% or more of the business At least one person with significant responsibility over company management. Learn More   Enter your Bank Details:
+    
+Enter your business bank account's details Upload a color copy of a statement, or other document from your bank, to verify your bank details   Click the checkbox to accept our terms and conditions and service fees. Click Submit.Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal and company information correctly:
+Your first / middle / last name, and your date of birth, must match those listed in your photo ID
+Your company's name and its registration number/tax ID must match the company's registered information Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name Upload a document that proves the validity and ownership of the VAT ID/Business ID/Tax ID/EIN during registration Confirm that the Legal Business Name, Shareholder and VAT ID/Business ID/Tax ID/EIN entered in the form matches those associated with your business bank account.Corporation (Canada)
+Enter Your Business Information:
+    
+Your legal business name Your CRA business number Enter your "Doing Business As" name. This is how your business appears on customers' statements.
+        
+Your statement descriptor must be between 5-19 characters Your statement descriptor must be similar to your business name / legal entity name /, or URL Your statement descriptor should not be too generic (e.g. "Store"), or already in use (e.g. "Wix.com")     Enter Your Business Description:
+    
+Select an industry type from the dropdown. Provide a brief description of the products / services you're selling.   Enter Your Company Address:
+    
+Your business address Your business phone number Is the business phone number the same as the business number for customer support?
+        
+Yes: Select this option and move on. No: Select this option and enter the alternative business phone number.   If requested, upload an address verification document, such as a utility bill, to confirm your address. The document must have been issued within the last 6 months   Enter Account Representative, Business Owner and Director details (as the person setting up the account):
+    
+Your country of residence Your full name Your date of birth Upload a Valid Photo ID (Passport, Driver’s License, Identity Card) Your address and phone number   Select the checkboxes:
+    
+Do you have a significant role in managing the company?:
+        
+Yes: Select this option if you hold a position with control over company management (e.g. CEO, CFO, Treasurer, Chairperson, etc.) No: Select this option if your position doesn't involve company management.   Do you own 25% or more of the business?:
+        
+Yes: Select this option if you're a shareholder with 25% or more of the company. No: Select this option if you own less than 25% (or don't own the business).   Are you registered as a director of the business?
+        
+Yes: Select this option if you're a registered director of the business. No: Select this option if you don't have a role as a registered director.     Click + Add Business Owner/director to add the following:
+    
+Anyone who owns 25% or more of the business At least one person with significant responsibility over company management. Directors on the company board
+Note: You may need to provide a document listing the company’s directors.    Enter your Bank Details:
+    
+Enter your business bank account's details If required, upload a color copy of a statement, or other document from your bank, to verify your bank details   Accept Wix Payments' terms of service and service fees, including consent to share some of your details with credit agencies to verify your identity.Note: You can click Save as Draft if you’d prefer to complete the form later.Verification Requirements:Make sure you've written your personal and company information correctly:
+Your first / middle / last name, and your date of birth, must match those listed in your photo ID
+Your company's name and its Business Number must match the company's registered information Enter a physical address to verify your account. PO Boxes are not accepted as a valid address Your bank statement / document should include the bank logo, as well as your account number and the account holder name If required, upload a document that proves the validity and ownership of the Business Number during registration Confirm that the Legal Business Name, Shareholder and Business Number entered in the form matches those associated with your business bank account.FAQsClick a question to learn more about setting up your account.What happens after I submit my details to set up my Wix Payments account?After submitting your details, you are required to go through a verification process. Can I switch between account types?How do I get help with the set up?Contact Wix Customer Care and we would be happy to assist.Video tutorialWatch the video below to learn more about setting up your Wix Payments account.

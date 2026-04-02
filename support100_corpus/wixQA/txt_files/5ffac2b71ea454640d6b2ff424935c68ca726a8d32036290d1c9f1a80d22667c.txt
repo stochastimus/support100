@@ -1,0 +1,56 @@
+Email Marketing: Adding Elements to Your Campaign
+Add a variety of elements to your email marketing campaign to help grow your existing customer relationships, encourage subscriber interaction with a newsletter, or capture the attention of potential new subscribers.You can add elements such as customized text, your brand's logo, an eye-catching image and video, or a button that leads to your products to gain more customers.To add an element to your email campaign:
+Go to Email Marketing in your site's dashboard. Click Edit next to an existing campaign or create a new one. Click Add  on the left and choose from the following elements: TextAdd or edit text to tell people what you want them to know. 
+Enter the text you want to display in the element on the right.
+Tip: If you want to format specific text only, instead of all the text in the element, use your cursor to highlight the relevant text.  Click the relevant tab on the left to edit the Content or Design:
+    
+Content: Use the available options to edit the format, font, size, style or add personalized content. Design: Use the available options to edit the background fill color, layout, border width and color, or the padding of the element.   Click Apply. To add text copied from an external source:
+Highlight the relevant text to be copied from the original source. Press Ctrl + C (on Mac press Command + C). Double-click the text box in your email campaign, then click where you want the text to be pasted and press Ctrl + Shift + V (on Mac press Command + Shift + V).ImageBrowse the Free Wix collections or add your own eye-catching images. 
+(If adding a new image element) Select the image you want to add and click Add to Page. You can choose an option on the left to upload your own media or explore other media sources.  Select the relevant option:
+    
+Change Image: Replace the selected image with a different one.  Edit: Use the Wix Photo Studio tools to enhance and improve the image. 
+Tip: You can also click the Crop icon  from the toolbar on the right. Add a link: Enable the toggle and enter the URL you want to link the image to.  Design: Use the sliders to adjust the padding around the image.
+   Click Apply. Note: Images you add automatically resize to a 700 pixel width. Smaller images keep their original size.ButtonAdd a call-to-action that sends people where you want them to go. 
+Click the relevant tab on the left to edit the Content or Design:
+    
+Content: Edit the following details: 
+        
+Button text: Enter the text that displays on the button.  What does it connect to?: Choose what happens when viewers click the button:
+            
+Regular URL: A new tab opens with the address you enter in the Enter a URL field.   Document: A document downloads to the browser. Click Choose File, select the relevant document and click Add to Page.  Standalone form: A custom form you can use to collect info or feedback opens in a new tab. Select the form you want to use or click + Create Form to create a new form.      Design: Customize the font, text color, fill color, border width and color, corner shape, alignment, and padding.
+   Click Apply. DividerAdd a decorative line to break up the sections in your email. 
+Select the divider you want to use under the Format tab.
+ Click the Design tab and set the divider color and padding.  Click Apply. HTMLEmbed HTML code to include additional elements in your email.
+Enter your HTML code in the provided field.
+Note: This component does not support Javascript as well as some HTML tags and attributes. Unsupported code will be removed. Learn more about adding HTML to your email campaign.  Click Apply. ColumnsDisplay your content in columns to break up the layout. 
+Under Number of columns, select the total columns you want to use. Under Choose a preset layout, select the layout you want to use and click Customize.  Choose the Columns ratio (%) you want to use.
+ (Optional) Click the Stack columns on mobile toggle to choose how the columns appear on mobile:
+    
+Enabled: On mobile, the columns are displayed at full width and ordered from top to bottom.  Disabled: On mobile, the columns display next to each other as they do on desktop.    Under Padding, set the padding of the entire column element.  Under Column spacing, set the horizontal and vertical spacing between the columns. Click Apply.  Click the relevant images, text, and buttons from the columns on the right to edit them. Tip: Check how your columns appear on mobile by clicking Preview and Test at the top right. Then select the Mobile icon  at the top.  LogoHelp people recognize your brand by adding your own logo. When you add a logo to your campaign, it is automatically added to all your future campaigns.Tips:
+This option adds your logo to the top of your email campaign only. To add your logo in a different location, use the "Image" element instead.  Click Get a Logo to use the Wix Logo Maker to design your own professional logo. 
+Add your logo:
+    
+Click Change Image and select the image you want to use for your logo.
+Tip: Click + Upload Media if you need to upload your logo. Click Add to Page.    (Optional) Click Edit to use the Wix Photo Studio tools to modify the image.  (Optional) Click the Add a link toggle to link your logo, then enter the URL you want to link it to.  Click the Design tab and customize the design:
+    
+Size: Select the size of your logo: Small, Medium, or Large.  Alignment: Choose how you want the logo to align: Left, Center, or Right.  Show background: Click the toggle to add a background color and select a background layout option.  Padding: Use the sliders to set the element's padding.
+   Click Apply. VideoLively up your campaign with your own video or choose one from YouTube. 
+Choose an option:
+    
+My video uploads: Upload your own video:
+        
+Click Choose File and select the video you want to add.
+Tip: Click + Upload Media if you need to upload the video.  Click Add to Page.    YouTube: Show a video from YouTube. Enter the video URL in the field.
+Note: When adding your own video from YouTube, make sure the video settings in YouTube are set to Public and the Allow Embedding box is checked.    Click Apply. Notes: 
+Clicking a video in an email campaign via email opens the video in a new browser window. If you're using Wix Video, you can create email campaigns directly from your Video Library. SubscribeAdd a subscription form to grow your mailing list. 
+Edit the information in the Content tab:
+    
+Title: Enter the title that displays at the top of the subscribe element.  Button text: Enter the text that displays on the "Subscribe" button.  Placeholder text: Enter the text that appears in the field before viewers enter their email (e.g. "Add your email...").  Success message: Enter the message subscribers see when they've been successfully added to your contacts. Error message: Enter the error message subscribers see if the email address they entered is not in the correct format (e.g. "example@email.com").  Require consent: (Recommended) Enable the toggle to add a checkbox that subscribers must select before subscribing. Learn more about requiring consent for your subscribe form.
+   Click the Design tab.  Under Text, set the font and color of the text.  Under Button, set the font, text color, fill color, border width, and border color.  Click Apply. Tip: Learn how to create a privacy policy for subscribers to agree to when you require consent. LinkAdd a link that shows a preview of a webpage, including the page's title, description and image. 
+Enter the URL of the link in the field.  Click Apply. MusicLet your fans listen to, share, and buy your music. You must add Wix Music to your site to see this option. 
+Click the drop-down and select the playlist you want to display. Choose a theme: Light or Dark. SocialConnect your campaign to all your social channels so people can easily follow you. 
+Choose what you want to display from the Content tab:
+    
+Title: Enter the title that displays at the top of the social element.  Social Media: Enable the toggle next to each social network you want to include. Then enter the URLs of your profiles for each social network.
+   Click the Design tab and edit the font text color and icon size.  Click Apply. To move, crop, duplicate, or delete elements: Select the relevant element in your campaign and choose from the following options on the right: 
+Move up / down: Select the relevant arrow to move the element up or down.  Crop: Go to the Photo Studio to crop your image or edit it using the available tools. Duplicate: Create a copy of the element.  Delete: Click Confirm Delete to permanently remove the element. Next: Learn how to preview and test your campaign before you send it. 

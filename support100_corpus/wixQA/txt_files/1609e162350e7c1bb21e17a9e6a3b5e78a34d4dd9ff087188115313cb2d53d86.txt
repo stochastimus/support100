@@ -1,0 +1,18 @@
+Site Members: Customizing the Member Signup Form
+The member signup form lets your site visitors register to become members of your site. The default form matches the design of your site, but you can design your signup form from scratch by using a custom form. Learn more about the different types of member signup forms.Important:
+You must have a Members Area on your site to create a custom signup form. Currently, it is not possible to add social logins to a custom signup form. However, you can add them to the default signup form. Step 1 | Add a custom signup formThe Members Area app comes with a default signup form. To start using a custom form, head over to the Pages panel in your editor. Wix EditorStudio Editor
+Click Pages & Menu  on the left side of the editor. Click Signup & Login. Change the default signup form to custom:
+    
+Click Member Signup Form (Default).  Choose Custom Form from the drop-down under Which member signup form do your visitors see? Click Add to Site.  
+Click Pages  on the left side of the editor. Change the default signup form to custom:
+    
+Click Signup (Default). Choose Custom Form from the drop-down under Which member signup form do your visitors see? Click Add to Site.   Click any element on the form to customize it.Step 2 | Customize the signup formYou can customize your form in several ways. Below are some ideas of things you may want to do to your custom signup form: Add elements to your formYou can add any element to your custom form, including buttons, images and social share buttons.Change and add form fields
+Select a field and click Edit Field to make changes to it. Click Add New Field to add more fields to the form.Design the form
+Click the Design icon .  Click Customize Design. Choose what you want to design: Input Fields, Submit Button or Form Background. Customize the design using the options available.Customize the button
+Click the button on the form. Customize the button:
+    
+Click Change Text to edit the button text. Click the Layout icon  to change the text alignment and direction.  Change the email notification settings
+Click Form Settings. Click the Settings tab. Click Email Notifications. Click Set Notifications. Choose how you want to get notified when a new member signs up: 
+    
+Inbox, email and Wix app: Choose the collaborators you want to notify.
+Tip: You can also add new collaborators at this point. By default, they'll join with the Customer Relations Manager role. Email only: Enter the email address(es) you want to notify.   When you are finished customizing your form, click Exit Mode on the floating Lightbox Mode bar.

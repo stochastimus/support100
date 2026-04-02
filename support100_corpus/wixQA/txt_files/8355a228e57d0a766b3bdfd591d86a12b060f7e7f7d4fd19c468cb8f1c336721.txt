@@ -1,0 +1,29 @@
+Requiring Customers to Sign Up Before Making Purchases
+Important:This article is relevant for Wix Stores, Wix Bookings, and Wix Restaurants Orders (New).You can limit guest checkout on your site so that visitors can browse what you offer, but need to become site members before they can access the Cart Page to begin the checkout process. By requiring customers to sign up, you save their information. This makes it possible for customers to track their orders on your site and make future purchases without re-entering information.In this article, learn more about:
+Restricting purchases to signed in customers Frequently asked questions (FAQs)Note:There are certain ways to complete an order without going through the Cart page (see the FAQs section for more details). In these cases, restricting access to the Cart page won't stop customers from completing orders without signing in. Restricting purchases to signed in customersEdit the permission settings for the Cart page so that only signed in members can access it. You can also choose to limit access to a member role you created or to clients who have purchased a pricing plan. Before you begin:If you don't already have it, add the Wix Members Area to your site.Wix EditorStudio Editor
+Go to your editor. Click Pages & Menu  on the left side of the editor. Select an option:
+    
+My site has only Wix Stores:
+        
+Click Store Pages. Click Cart Page.   My site has only Wix Bookings:
+        
+Click Bookings Pages. Click Cart Page.   My site has Wix Restaurants Orders (New) or 2 business solutions:
+        
+Click Cart & Thank You. Click Cart Page.    
+Click the Settings icon  next to Cart Page.  Select the Permissions tab. Click Members Only. Decide Which members can access this page:
+    
+All members. Only selected members or paying customers: Limit access to a member role you created or to clients who have purchased a pricing plan.   
+Go to your editor. Go to your Cart page: Click Pages  on the left side of the editor. Select an option:
+    
+My site has only Wix Stores:
+        
+Click Store Pages. Click Cart Page.   My site has only Wix Bookings:
+        
+Click Bookings Pages. Click Cart.   My site has Wix Restaurants Orders (New) or 2 business solutions:
+        
+Click Cart & Thank You. Click Cart Page.    
+Click the More Actions icon next to Cart Page.  Click Settings. Select the Permissions tab. Click Members Only. Decide Which members can access this page:
+    
+All members. Only selected members or paying customers.  FAQsClick a question below to learn more. How can my Wix Stores customers go straight to checkout, bypassing the Cart Icon and Cart Page altogether?If you have the type of store where customers often purchase a single item, you may want to streamline the checkout process by allowing customers to bypass the Cart Icon, Side Cart, and Cart Page. To do so, enable the Buy Now button on the Product Page. 
+Click the Product Page in your editor. Click Settings. Click the Settings tab. Scroll down and click the Show button toggle under Buy Now to enable it.
+Can Wix Bookings customers also go straight to checkout?Yes, you can use Wix Bookings without Cart Checkout enabled. This will ensure they don't see the Cart Icon and Cart Page.

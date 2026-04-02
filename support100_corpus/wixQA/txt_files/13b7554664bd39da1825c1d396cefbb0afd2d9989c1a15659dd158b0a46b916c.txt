@@ -1,0 +1,18 @@
+Wix Stores: Adding and Setting Up a Wishlist
+Let your customers keep track of their favorite products by adding them to a wishlist.  Later, they can review wishlisted items and choose which ones to purchase.Step 1 | Accessing the Product PageWhen you add a wishlist button, it appears in the Product Page.Wix EditorEditor XStudio Editor
+Go to your editor. Go to your Product page: Click Pages & Menu  on the left side of the editor. Click Store Pages. Click Product Page.
+Go to your editor. Go to your Product page: Click Pages  at the top of the editor. Click your Product page under Store Pages.
+Go to your editor. Go to your Product page: Click Pages  on the left side of the editor. Click your Product page under Store Pages.Step 2 | Adding and customizing the wishlist buttonNow you can add a wishlist to your Product Page so customers can keep track of their favorite products. Customize the wishlist icon to suit your site's design. Note:The wishlist icon appears next to the button you display in the Product Page ( the "Add to Cart" or "Buy Now" buttons). If you decide not to display either button, the wishlist icon turns into a button with text.Wix EditorEditor XStudio Editor
+Click the Product Page in the Editor. Click Settings. Click the Wishlist tab. Click Add Wishlist.
+Click the Product Page in the editor again. Click Settings. Click the Wishlist tab. Customize the button using the available customizations.
+Click the Product Page in the Editor. Click Settings. Click the Wishlist tab. Click Add Wishlist.
+Click the Product Page in the editor again. Click Settings. Click the Wishlist tab. Customize the button using the available customizations.
+Click the Product Page in the Editor. Click the Plugins icon . Click Wishlist. Click Add.
+Click the Product Page in the Editor again. Click the Action Buttons. Click the Wishlist button. Click Design Wishlist Button. Customize the Add to Wishlist and Remove from Wishlist states using the available options.Step 3 | Customizing the My Wishlist pageThe My Wishlist page is where customers can view and keep track of their favorite products. You can optionally add an "Add to Cart" button to make it easy for customers to make purchases.Wix EditorEditor XStudio Editor
+Click Pages and Menu  on the left side of the Editor. Click Members Area. Click the My Wishlist page. Click the My Wishlist page in the Editor. Click Settings. Customize the My Wishlist page using the available options.
+Click Pages  at the top of the editor. Click Members Page. Click the Member Menu.
+Click Manage and Navigate. Select My Wishlist. Click the My Wishlist page in the Editor. Click Settings. Customize the My Wishlist page using the available options.
+Click the Product Page in the Editor. Click the Plugins icon . Click Wishlist. Click Add.
+Click the Product Page in the Editor again. Click the Action Buttons. Click the Wishlist button.
+Click Design Wishlist Button. Customize the Add to Wishlist and Remove from Wishlist states using the available options.FAQsHow can I remove the wishlist from my store?In the Wix Editor or Editor X, go to the wishlist settings, scroll to the bottom and click Remove Wishlist
+In the Studio Editor, click the wishlist icon, then click the More Actions icon  and select Delete.How can I get more information about managing pages in the Members Area?Learn how to add and manage pages in the Members Area.

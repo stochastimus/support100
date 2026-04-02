@@ -1,0 +1,22 @@
+Duplicating Your Site
+Make a copy of your site so you have a safe space to experiment with different site pages and design elements. Any changes you make to the copy do not affect your live site. You can also transfer the duplicate to another account.
+
+        Click to duplicate your site
+    
+
+
+        Duplicate your site
+      
+
+Duplicating your siteLearn how to duplicate your site from your editor or dashboard.DashboardWix Editor Editor XStudio Editor 
+Go to your site's dashboard. Click Home on the left.  Click the Site Actions icon . Click Duplicate Site. 
+Enter a name for the duplicate site. Click Duplicate. 
+Go to your editor. Click Site at the top of the editor. Click Duplicate Site. 
+Enter a name for the duplicate site. Click Duplicate. 
+Go to your editor. Click Site at the top of Editor X. Click Duplicate Site.
+Enter a name for the duplicate site. Click Duplicate. 
+Go to your editor. Click the Wix Studio icon  at the top left. Hover over Site.  Click Duplicate Site. 
+Enter a name for the duplicate site. Click Duplicate. FAQsClick a question below to learn more.What content is not copied to my duplicate site? 
+Store orders and invoices Contacts and members  Email campaigns and triggered emails Settings for third-party apps Google Operations logs Velo by Wix: 
+    
+Secrets stored in your Secrets Manager.  Any elements that were hidden require enabling Velo in your new site.   Can I duplicate my site if it was built by a Wix Professional or agency?If a Wix Professional or agency built your site with the Studio Editor, you cannot duplicate it from your account.

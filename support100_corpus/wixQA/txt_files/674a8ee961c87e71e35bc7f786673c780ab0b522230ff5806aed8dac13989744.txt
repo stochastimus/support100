@@ -1,0 +1,10 @@
+Previewing the Checkout Process
+Important:Placing a test order is possible only with Wix Stores or Wix Restaurants Orders (New).You can preview the checkout process before you launch your online store. This lets you view what customers will see when they make a purchase.In this article, learn more about:
+Previewing the checkout process FAQsPreviewing the checkout processBefore you go ahead and make a test purchase, set up your site in a way that allows you to run through checkout without it being available to customers. Then, you can test the process by logging in to your site's Members Area and selecting a store product. Notes:
+Only the site owner can preview the checkout process, not site Admins or people with other roles & permissions. It's not currently possible to preview the checkout process for Wix Bookings services.To preview store checkout:
+Prepare your site to preview the checkout process:
+    
+Enable the manual payment method so you won't be charged. If your site has a Premium plan or Studio plan, do one of the following:
+        
+Temporarily unassign the plan from your site. Duplicate your site and test the checkout on the duplicated version.    If your site doesn't have a Members Area, add it now.   (If not already logged in) Log in to your Wix account. Open your live site. Log in to your site using the Members Area.
+Navigate to a Shop page. Add a product to your cart and click Checkout. Click I just want to place a test order.Complete the store checkout process.FAQsCan customers access this checkout?No, in order for customers to go to checkout and purchase a product, you need to upgrade to a business Premium plan. Can I preview the checkout for product subscriptions?No, it's not possible to preview checkout of product subscriptions.What happens if I preview the checkout with a payment method other than manual payment?You can preview the checkout with other payment methods. Just note that you will be charged for the transition. This means that you'll pay and receive payment. In addition, you'll pay any transaction fees the payment provider charges.

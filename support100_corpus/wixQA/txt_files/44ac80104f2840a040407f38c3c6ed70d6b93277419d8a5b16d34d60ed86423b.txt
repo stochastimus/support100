@@ -1,0 +1,35 @@
+Wix Analytics: Downloading & Subscribing to Wix Analytics Reports
+Wix Analytics lets you download and subscribe to reports for easy access to your site's performance. Download reports to review your data offline and easily share it with others. Subscribe to reports to automatically receive report data without manually checking your dashboard.For example, if you run an online store, you can download sales reports to analyze your monthly performance and share them with your team. Subscribing to weekly traffic reports can help you stay on top of visitor trends and make timely decisions.You can find the All Reports page under Analytics in your site's dashboard.
+
+        View All Reports.
+    
+
+
+        Take me there
+      
+
+
+In this article, learn more about:
+Downloading a report Subscribing to a report Editing a report subscription Unsubscribing from a report Frequently asked questions (FAQs)Downloading a reportDownload your Wix Analytics reports to your computer for offline review or sharing. You can choose from various file formats like Excel, CSV, or Image (PNG).To download a report:
+Go to All Reports in your site's dashboard. Select a report. Click the Download drop-down at the top right. Select a file format (Excel, CSV, or Image).Subscribing to a reportSet up automatic email delivery for your reports to stay updated without having to manually check your dashboard. Customize your subscription settings, including the report format, frequency, and delivery time.To subscribe to a report:DashboardWix appWix Studio app
+Go to All Reports in your site's dashboard. Select a report. Click Subscribe. Customize the look and timing of the automated emails:
+    
+Choose how to view your schedule (e.g. line chart, table). Choose the report time period (e.g. last 7 days, last 30 days). Select the attachment type (CSV, Excel, none). Choose the frequency, day of the week, and hour for your report to be emailed. Add an email subject line. Add a description of the report.   Click Subscribe.
+Go to your site in the Wix app. Tap Manage  at the bottom. Tap Analytics and select All Reports. Select a report. Tap the Subscribe icon  at the top right. Customize the look and timing of the automated emails:
+    
+Choose how to view your schedule (e.g. line, table). Choose the report time period (e.g. last 7 days, last 30 days). Select the attachment type (CSV, Excel, none). Choose the frequency, day of the week, and hour for your report to be emailed. Add an email subject line. Add a description of the report.   Tap Save.
+Go to your site in the Wix Studio app. Tap Manage. Tap Analytics and select All Reports. Select a report. Tap the Subscribe icon  at the top right. Customize the look and timing of the automated emails:
+    
+Choose how to view your schedule (e.g. line, table). Choose the report time period (e.g. last 7 days, last 30 days). Select the attachment type (CSV, Excel, none). Choose the frequency, day of the week, and hour for your report to be emailed. Add an email subject line. Add a description of the report.   Tap Subscribe.Editing a report subscriptionEdit your existing report subscriptions to better match your needs. You can adjust the frequency, format, and other settings to ensure you receive the information you need.To edit your subscription:DashboardWix appWix Studio app
+Go to All Reports in your site's dashboard. Select a report. Click Edit Subscription at the top right. Make the relevant changes to the subscription:
+    
+Choose the report time period (e.g. last 7 days, last 30 days). Select the attachment type (CSV, Excel, none). Choose the frequency, day of the week, and hour for your report to be emailed. Add an email subject line. Add a description of the report.   Click Save.
+Go to your site in the Wix app. Tap Manage  at the bottom. Tap Analytics and select All Reports. Select a report. Tap the More Actions icon at the top right. Tap Edit Subscription. Make the relevant changes to the subscription:
+    
+Choose how to view your schedule (e.g. line, table). Choose the report time period (e.g. last 7 days, last 30 days). Select the attachment type (CSV, Excel, none). Choose the frequency, day of the week, and hour for your report to be emailed. Add an email subject line. Add a description of the report.   Tap Save.
+Go to your site in the Wix Studio app. Tap Manage. Tap Analytics and select All Reports. Select a report. Tap the More Actions icon at the top right. Tap Edit Subscription. Make the relevant changes to the subscription:
+    
+Choose how to view your schedule (e.g. line, table). Choose the report time period (e.g. last 7 days, last 30 days). Select the attachment type (CSV, Excel, none). Choose the frequency, day of the week, and hour for your report to be emailed. Add an email subject line. Add a description of the report.   Tap Save.Unsubscribing from a reportYou can unsubscribe from a report if you no longer wish to receive the report by email. You can always go back and re-subscribe to the report.To unsubscribe from a report:DashboardWix appWix Studio app
+Go to All Reports in your site's dashboard. Select a report. Click Edit Subscription at the top right. Click Unsubscribe at the bottom left. Click Unsubscribe again to confirm.
+Go to your site in the Wix app. Tap Manage  at the bottom. Tap Analytics and select All Reports. Select a report. Tap the More Actions icon at the top right. Tap Unsubscribe.
+Go to your site in the Wix Studio app. Tap Manage. Tap Analytics and select All Reports. Select a report. Tap the More Actions icon at the top right. Tap Unsubscribe.FAQsClick a question to learn more about downloading and subscribing to reports.What is the maximum number of rows when exporting a report?The maximum number of rows you can export in a table report is 5,000 rows.Can I subscribe to a custom report? Currently, it's not possible to subscribe to custom reports. It is only possible to download them.

@@ -1,0 +1,3 @@
+Wix Editor: Elements that Can't be Added to Repeaters
+You can add many elements to your repeater such as images, buttons, text and shapes. However, there are some limitations.Below is a list of elements that cannot be added to a repeater: 
+All third-party apps Anchors and anchor menus Box slideshow Facebook Comments Facebook Like Facebook Page Like Flash elements Full width slideshows Google Maps Horizontal and vertical menus Most photo galleries (including full-width galleries, and certain layouts such as Masonry and Stacked) Multi-State Box Pagination Bar Pay Button Pin to Pinterest Pinterest Follow Repeaters Share from Pinterest The HTML component The Pro Gallery Twitter Follow Twitter Tweet VK Share Video Box Wix Chat Button Wix Music Wix Video YouTube Subscribe

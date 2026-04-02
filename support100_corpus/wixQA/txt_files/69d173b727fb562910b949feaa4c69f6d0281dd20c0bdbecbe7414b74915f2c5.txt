@@ -1,0 +1,13 @@
+Wix Stores: Updating Inventory
+The Inventory tab is the place to update stock levels when you receive new merchandise. You can update the inventory of a single product or multiple products at once to save time.  To update inventory:
+Go to Inventory in your site's dashboard. (Optional) Filter your products to locate what you want to update:
+    
+Click the Filter by drop-down to view In Stock or Out of stock products. Click More Filters and select the relevant filter option(s) (e.g. filter by categories).    Choose what you want to do:Update the inventory of a single product
+Click the Inventory field or drop-down next to the relevant product.  Update inventory:
+    
+If you track inventory: Enter a new inventory  number next to the relevant product.
+ If you don't track inventory: Select In stock or Out of stock from the drop-down. 
+  Update the inventory of multiple productsYou can select the products you want to update and perform bulk updates. For example, if you need to add 30 items to the inventory of multiple products, you can add them all at once.
+Select the checkboxes next to the products whose inventory you want to update.  Click Update Inventory at the top right. Select an option:
+    
+Add the same number of items to multiple products: Select Add and click the arrows to select the inventory amount to add to the selected product (e.g. add 30 items of inventory to each selected product). Set the inventory of multiple items to the same level: Select Set and then use the arrows to set the inventory to a particular level (e.g. set the inventory of all the selected products to 100). Choose an option from the drop-down: If you are not tracking inventory, select an inventory status (In stock or Out of stock).  What to learn more?Check out the full Wix Learn course on getting started with Wix eCommerce.  

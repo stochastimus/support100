@@ -1,0 +1,2 @@
+Repurchasing a Site Plan Canceled Due to Payment Issues
+If your Premium or Studio site plan renewal payment failed due to payment issues, please update your payment details and we will attempt the charge again.If your site plan was already canceled due to payment issues, you can simply purchase a new plan by upgrading the site again.Unable to repurchase:If you are having trouble repurchasing a site plan after cancellation, unassign the canceled plan from your site and try to upgrade again.

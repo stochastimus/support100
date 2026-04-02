@@ -1,0 +1,29 @@
+Managing Multiple Sites Under One Account
+With Wix, you're not just limited to creating a single site. You can create as many as you need to manage multiple businesses, separate your personal site or blog, or experiment with different designs.If you reach the limit of free sites you can have within your account, you can move old sites to trash or upgrade your sites to Premium. Important:Premium plans are valid for a single site only. To make use of Premium features on a second site, you'll need to purchase a second Premium plan.In this article, learn more about:
+Viewing and managing your sites Switching between sites in your account Creating a new site in your account Duplicating a site in your account Freelancers and designers Frequently asked questions (FAQs)Viewing and managing your sitesWhen signing in to your Wix account, if you have more than one site, you're taken to the All Sites page. Here you can view all your sites, organize them into folders, perform site actions, and more.Choose between a grid or list view, then search or scroll to view your sites. At a glance, you can view each site's name and URL, whether it's Premium, and if it has collaborators.To view and manage your sites:
+Go to Sites. Click the Site Actions icon  next to the relevant site and select the action you want to take:
+    
+Edit Site: Go to your site's Editor.  Rename Site: Change your site's name at any time.  Get Feedback: Learn what clients, colleagues, or friends think about your site before you publish. View Live Site: Go to your live site and view it as your site visitors would.  Change Owner: Give ownership of this site to another person. You can transfer a free site or a Premium site.  Add Collaborators: Invite people to collaborate on your site.  Transfer Plan: Assign a Premium plan to a different site in your Wix account.  Duplicate Site: Make a copy of your site.  Move to Folder: Organize your sites into folders to make them easier to find and manage. Move to Trash: Delete a site by moving it to the Trash folder if you are no longer using it.    Click Select Site to access the site's dashboard.Switching between sites in your accountEach site in your account has its own dashboard where you can manage all aspects of your site and business, and access the Editor of that site. You can switch between your sites from the dashboard.
+
+                Click to switch to a different site     
+    
+
+
+              Switch Sites Now      
+      
+
+To switch between sites in your account:
+Go to your site's dashboard. Click the All Sites drop-down at the top left of your dashboard. Select the relevant site. Using Wix Studio?Use the search bar to quickly find other sites in your account. Creating a new site in your accountCreate a new site to try out different templates and features. Once you're done designing, you can decide which site to upgrade, or upgrade multiple sites.
+
+                 Click to create a new site       
+    
+
+
+               Create a site now       
+      
+
+Duplicating sites in your accountYou can create a copy of an existing site so you have a backup version to experiment with. The duplicate copy does not include some business-related content such as store orders, contacts, and third party app settings.To make a copy of your site:
+Go to your site's dashboard. Click the Site Actions icon . Select Duplicate Site. 
+Edit the Site name and click Duplicate. Freelancers and designersIf you are an agency or freelancer that designs sites for clients you can join the Wix Partner program where you'll have access to exclusive features and benefits.Learn more about the Wix Partner Program.FAQsClick a question below to learn more about managing multiple sites under one account.Can I assign a Premium plan to a different site in my account?Yes, if you create a new site, you can move your Premium plan and features over to that site.To transfer a Premium plan from one site to another:
+Go to Premium Subscriptions in your Wix account. Click the More Actions icon  next to the plan you want to reassign.   Click Assign to a Different Site.Learn more about reassigning your Premium plan.Why can't I find my site in my account?It's possible that you used a different email address when creating your site, if so it means you have more than one account.To check which email address you used when creating your site:
+Click to go to the Account Email Locator. Enter your website address (URL). Click Next.Once you know which email address you used, you can reset your password to gain access.Can I have a site in multiple languages?If you want your site to have multiple languages, you don't need to create a separate site for each one. You can use Wix Multilingual to create a single, multilingual site.If you want your sites to have different languages, you can change the language of a specific site from regional settings.I have multiple sites in different accounts, can I manage them in one place?Yes, it's always easier when all your sites are in a single account. If you created more than one account, you can choose one account to be the main one, and transfer your other sites over.Can I transfer my Premium services from one Wix account to another?Yes, when you transfer a Premium site from one account to another, you can choose to transfer your Premium services with it. Learn more about transferring a Premium site to another Wix account.Alternatively, you can transfer a domain from one account to another without transferring the site. Learn how to transfer a domain purchased from Wix or an external domain from one account to another.

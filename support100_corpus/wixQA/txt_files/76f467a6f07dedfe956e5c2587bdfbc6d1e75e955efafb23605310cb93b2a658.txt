@@ -1,0 +1,16 @@
+Wix Editor: Adding a New Item to Your Site Menu
+Your site menu is the main menu on your website and allows your visitors to navigate around it. Add a variety of items to the menu to ensure your visitors can get to all the information and content that they need.In this article, learn more about:
+Adding a new page to your menu Adding a link to your menu Adding a subpage dropdown menu Adding a page section Adding new pages to your site menuWhen you add a new page, a new item is automatically added to your site menu and has the name of the page. You can add a new page to your site from the Pages & Menu panel.To add a new page to your menu:
+Go to your editor. Click Pages & Menu    on the left side of the editor. Click Add Page at the top of the panel. Choose the page template from the options or click + Blank Page. Enter the new page name. Click Done.Tip:If you rename the page in the Pages & Menu panel, it automatically updates on your site menu. It also goes the other way around – if you rename the item on your site menu, it automatically updates the Pages & Menu panel.Adding a link to your site menuAdd any link you need to your site menu, whether it's an external URL, an email address, a document, etc. The link looks like a regular item on your site menu, but when your visitors click it, the link destination opens. Choose whether it opens in the same window or a new window.To add a link to your menu:
+Go to your editor. Click Pages & Menu    on the left side of the editor. Click the Add Menu Item at the bottom of the panel. Click Link. Select the link type and enter the link details.  Choose whether your link opens in a new window or the current window.  Click Done. Enter the name for the menu item. Click Done.Adding a subpage dropdown menuCreate a dropdown subpage menu within your site navigation to keep it organized and user-friendly. Choose between two options: turn an existing menu item into a clickable title for your dropdown, or add a new non-clickable menu title to organize your subitems beneath it.To add a dropdown menu:
+Go to your editor. Click Pages & Menu    on the left side of the editor. Choose what to do next:Clickable title (i.e. menu item)Drag and drop a menu item to nest it under another item, turning it into a subpage. 
+
+Decide which menu item should be the submenu title. Drag all relevant menu items into the dropdown.
+
+ Non-clickable titleAdd the dropdown as a new menu item and give it a title to nest additional items beneath it.
+
+Click Add Menu Item. Click Dropdown.  Enter the item title.  Click Done. Drag all relevant menu items into the new dropdown title.
+
+
+Adding a page section to your site menuSections are a great way to divide and organize your page content. Link to sections from your site menu so your visitors can be directed there with one click.To add a section to your site menu:
+Go to your editor. Click Pages & Menu    on the left side of the editor. Click Add Menu Item at the bottom of the pages panel. Click Section. Select the page the section is on from the dropdown menu. Select the section from the dropdown menu. Click Done.

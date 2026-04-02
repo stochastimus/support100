@@ -1,0 +1,5 @@
+Changing the Subscription Period of Your Plan
+Change the subscription period of your Premium plan or Studio plan as you need to. You can choose to move to a shorter term contract, or alternatively receive the cost benefits of a longer term plan.Important
+If you switch to a shorter plan cycle, your billing cycle will switch over on the date when your current cycle ends. If you switch to a longer plan cycle, the upgrade takes effect immediately. We will credit you for any remaining time on your current plan. Learn more about how credit is calculated when upgrading your plan.To change your subscription period:
+Go to Premium Subscriptions in your Wix account. Click the More Actions icon  next to the relevant plan.  Click Change Billing Cycle.
+Select your new billing cycle. Click Continue. Review your billing information and click Confirm.

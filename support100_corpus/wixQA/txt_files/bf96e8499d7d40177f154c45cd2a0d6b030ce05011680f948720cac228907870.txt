@@ -1,0 +1,26 @@
+CMS: Accessing and Syncing Your Sandbox and Live Collections
+If you've enabled the sandbox in your CMS (Content Management System), each collection on your site comes in two versions: a sandbox version for testing and a live version for your visitors. Both versions share the same structure but can hold different content.The sandbox collection is a test environment you use with the editor while building your site. Its content stays private until you decide to sync it with your live collection. This syncing process copies all content from the sandbox to the live collection, provided the sandbox is enabled. Remember, syncing can't be undone, so it's important to understand the differences between sandbox and live collections before proceeding.The live collection is what displays content on your live site for your visitors to see and interact with. When you sync the sandbox collection to the live collection, new items get added to the live collection, and updated items in the sandbox overwrite the same items in the live collection. However, if you remove an item from the sandbox and then sync, the item won't be removed from your live content.In this article, learn about:
+Enabling sandbox collections Accessing and syncing sandbox and live collectionsEnabling sandbox collectionsTo use sandbox collections, first enable them from your main CMS page's advanced settings. Wix EditorStudio EditorDashboard
+Go to your editor. Click CMS  on the left side of the editor. Click Your Collections. Click Manage next to Your Collections. 
+Click More Actions at the top right and select Advanced Settings. Enable the Sandbox toggle. 
+Go to your editor. Click CMS  on the left side of the editor.  Click Your Collections. Click Manage next to Your Collections.
+Click More Actions at the top right and select Advanced Settings. Enable the Sandbox toggle. 
+Go to CMS in your site's dashboard.  Click More Actions at the top right and select Advanced Settings. Enable the Sandbox toggle. Accessing and syncing sandbox and live collectionsGo to the relevant collection in your editor to access and sync your collections. You can sync items from your sandbox to your live collection or vice versa. Sync all the items at once or select only specific items you want to sync. Wix EditorStudio Editor
+Go to your editor. Click CMS  on the left side of the editor. Click Your Collections. Click the relevant collection. You should see Sandbox Collection at the top to indicate you're in the sandbox testing collection. 
+Choose what you want to do: Sync your sandbox collection items to your live collection
+Select the items you want to sync to your live site. If you want to sync all items, skip this step.  Click Sync content at the top right. Select the relevant option and click Sync: 
+    
+Sync all items from Sandbox to Live: Sync all the items from your sandbox to your live collection.  Sync {#} selected items from Sandbox to Live: Sync only the selected items from your sandbox to your live collection.    Click Sync to confirm. Access your live collection and sync it to your sandbox collection
+Click Live Collection at the top of the collection to access your live collection.  Select the items you want to sync to your sandbox collection. If you want to sync all items, skip this step. Click Sync content at the top right. Select the relevant option and click Sync:
+    
+Sync all items from Live to Sandbox: Sync all the items from your live collection to your sandbox collection. Sync {#} selected items from Live to Sandbox: Sync only the selected items from your live collection to your sandbox collection. Erase items in Sandbox and replace with Live items: Replace the items in your sandbox collection with the live collection items. 
+   Click Sync to confirm. 
+Go to your editor. Click CMS  on the left side of the editor.  Click Your Collections. Click the relevant collection. You should see Sandbox Collection at the top to indicate you're in the sandbox testing collection.
+Choose what you want to do: Sync your sandbox collection items to your live collection
+Select the items you want to sync to your live site. If you want to sync all items, skip this step.  Click Sync content at the top right. Select the relevant option and click Sync: 
+    
+Sync all items from Sandbox to Live: Sync all the items from your sandbox to your live collection.  Sync {#} selected items from Sandbox to Live: Sync only the selected items from your sandbox to your live collection.    Click Sync to confirm. Access your live collection and sync it to your sandbox collection
+Click Live Collection at the top of the collection to access your live collection.  Select the items you want to sync to your sandbox collection. If you want to sync all items, skip this step. Click Sync content at the top right. Select the relevant option and click Sync:
+    
+Sync all items from Live to Sandbox: Sync all the items from your live collection to your sandbox collection. Sync {#} selected items from Live to Sandbox: Sync only the selected items from your live collection to your sandbox collection. Erase items in Sandbox and replace with Live items: Replace the items in your sandbox collection with the live collection items. 
+   Click Sync to confirm. 

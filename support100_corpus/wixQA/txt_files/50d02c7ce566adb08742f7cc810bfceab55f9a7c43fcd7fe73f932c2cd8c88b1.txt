@@ -1,0 +1,32 @@
+Using 2-Step Verification for Your Wix Account
+2-Step verification is a security feature that lets you add another layer of verification to your login process. Each time you log in from an unrecognized device, a verification code is sent to your mobile phone or email address, or you can receive a notification to the Wix mobile app. This helps prevent anyone else accessing your account without your knowledge. Note:Logins using the Wix app also require verification if 2-step verification is enabled. Before you begin:
+If you want to use the email option for your 2-step verification, you need to ensure your email address is confirmed. You can find this on the Account Settings page. This is not relevant if you are just using the SMS option.  We recommend that you set up your Recovery Phone Number before enabling 2-step verification.In this article, learn how to:
+Enable 2-step verification Sign-in with 2-step verification Edit your verification phone number Disable 2-step verificationEnabling 2-step verificationYou can verify your account using 2-step verification with the Wix app, by SMS, with an authenticator app, or by email. Important:You can enable more than one verification option at the same time. If you choose to enable multiple options, the default prompt order is always: Wix app first, then an authenticator app, followed by SMS, and then email.To enable 2-step verification:
+Go to Account Settings in your Wix account. Scroll down to 2-Step verification. Click Enable next to your preferred method of verification:Verify logins with the Wix app
+Choose your device and click Next.
+Note: You'll only see devices that have recently been logged in to the Wix app. Click Approve on the login request sent to your selected device.
+ Choose a backup verification method (if required).
+Note: You won't need to complete this step if you already have another 2-step verification method set up, such as SMS, authenticator app, or email.Verify logins by phone (SMS)
+Add your phone number.
+ Click OK.  Go to your phone and get the 6-digit code.  Go back to Wix and enter the code.
+ Click Confirm. Note: If you are not receiving the SMS associated with your account's 2-step verification, please contact support.Verify logins with an authenticator app
+Enter your Wix password in the pop-up after clicking Enable. Open your authenticator app. Scan the QR code displayed in your browser with your authenticator app, or enter the code.
+ Follow any additional steps in your authenticator app to add your account to it. Click Next on the pop-up in your browser. Enter the 6-digit code that's shown in your authenticator app. 
+ Click Submit.Important: If you remove your account from your authentication app, or delete the app from your mobile device, you won't be able to sign in using this method. Verify logins by email
+Click Send Code to confirm your email address.
+ Go to your email account and login. Copy the 6-digit code in your email. Go back to Wix and enter the code.
+  Click Submit.Note: If for some reason you don't receive a verification code, please check your junk/spam folder.Important information about emails:Only the most common email domains (i.e. Gmail, Outlook, Hotmail, etc.) ﻿are eligible for 2-step verification. If your email is not supported, you'll see a message that says that your email's domain can't be used for verification.Signing in to your Wix account with 2-step verificationWhen you sign in to your Wix account with 2-step verification enabled, you need to confirm your login by approving the login in the Wix app, or by entering a code that was sent to you by SMS, authenticator app, or email.ImportantBy default, Wix remembers the device you sign in on for 30 days. We won't ask you to use 2FA to sign in on this device until the 30 days expire. If you don't want Wix to remember your device, uncheck the box marked Remember this device for 30 days.To sign-in with 2-step verification:
+Sign in to the Wix login page. Select the option that is relevant to you below:By Wix app
+Tap the login notification from the Wix app on your phone. Click Approve on the login request sent to your device. By phone (SMS)
+Go to your phone.  Get the 6-digit code sent to you by SMS. Enter the code under Enter code here in the Wix login page.  Click Verify.Note: 
+If you don't receive a code, click Lost access to your phone? on the verification page to bring you to our Account Recovery options. We recommend you try Resend Code before proceeding to Account Recovery. If you don't receive an SMS, click Call me to get a phone call from Wix and listen to the verification code instead. 
+By authenticator app
+Open your authenticator app on your phone. Get the 6-digit code for your Wix account.
+ Enter the 6-digit code under Enter code here in the Wix login page. 
+ Click Verify.By email
+Go to your email account and login. Copy the 6-digit code in your email.  Enter the code in the Wix login page. Click Verify. Note: If for some reason you don't receive a verification code, please check your junk/spam folder. Click Resend Code to resend the code to your email. Note:A 2-Step verification code will only be sent if you are signing in with email and password. If you sign in using social logins (e.g. Google, Facebook) a code is not required. Editing your 2-step verification phone numberKeep all your details up-to-date by editing your phone number when you change phones or update your phone number. This helps keep your 2-step verification in place and keep your Wix account secure. Once you update your number, a code is sent to you to confirm. To edit your verification phone number:
+Go to Account Settings in your Wix account. Scroll down to 2-Step verification. Click Edit next to your phone number.  Enter your phone number and click OK.
+ Go to your phone and retrieve the 6-digit code. Go back to Wix and enter the code.
+ Click Confirm.Disabling 2-step verificationYou can disable your 2-step verification at any time if you need to. After you disable it, you can log in without any additional codes. To disable 2-step verification:
+Go to Account Settings in your Wix account. Scroll down to 2-Step verification. Click the drop-down and click Disable. Important:
+Disabling 2-step verification means that your Wix account is protected only by your password. Wix mobile app verification requires at least one backup method. Disabling all other verification methods will also disable verification with the Wix app.

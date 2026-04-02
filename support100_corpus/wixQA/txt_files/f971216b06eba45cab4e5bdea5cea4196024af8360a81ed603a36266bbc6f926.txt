@@ -1,0 +1,8 @@
+Changing Your Payment Provider for Accepting Credit Card Payments
+Wix's in-house payment provider, Wix Payments, allows you to accept credit card payments without the need to connect to a third-party provider.If Wix Payments is not available in your region, you will see a list of locally available payment providers. Check here for available payment providers per country.  You can always change provider if you need to.Tip:Check your site's regional settings to make sure you receive all the options available in your location. Learn MoreTo change to a different payment provider:
+Go to Accept Payments on your site's dashboard.  
+Tip: Check your business location at the top right. If incorrect, click the drop-down menu to change it. Click Connect next to Wix Payments, or click See More Payment Options. Click See Options beside Third-Party Credit / Debit Card Providers (if you don't see your preferred provider).
+Click Connect beside the provider you want to change to. Click Yes, Switch to confirm your new provider. Connect your account:
+    
+Have an account: Click Connect Existing Account and follow the steps to connect your account. Don't have an account: Click Create an Account and follow the steps to create your account.  Using Wix Hotels?Click below to learn how to set up and manage payments:
+Wix Hotels

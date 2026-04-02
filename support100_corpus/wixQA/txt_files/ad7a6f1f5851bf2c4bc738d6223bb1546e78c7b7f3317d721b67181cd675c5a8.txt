@@ -1,0 +1,14 @@
+Using a Different Account with the Same Payment Provider
+If you have more than one account with a third-party payment provider, you can switch to your preferred account to accept payments on your Wix site. Additionally, Wix automatically connects you to the most suitable payment provider available in your region by creating a deferred account for you (e.g. with Stripe or PayPal). If you wish, you can switch to a different account, with the same provider, if you already have one.If you're not sure which provider account you currently have connected to your Wix site, you can check which provider you have connected and view your current credentials before you switch.  In this article, learn how to:
+View your provider credentials Switch your provider account Frequently asked questions (FAQs)Viewing your provider credentials
+Go to Accept Payments on your site's dashboard. Click Manage next to the payment provider / method you want to check. View your current provider credentials in the Account information section. Switching to a different account
+Go to Accept Payments on your site's dashboard. Click Manage next to the payment provider / method you want to change.
+Follow the relevant steps depending on your provider:
+    
+PayPal: 
+
+Enter the email address of your desired account in the Account information section. Click Save.   Stripe: 
+
+Click Change account. Enter your Stripe credentials and click Continue.   Other payment providers:
+        
+Enter the credentials of your desired account in the Account information section. Click Save.    FAQsClick a question below to learn more about accepting payments.How do I check which payment provider account I have connected to my site?To check which payment provider you have connected and to view your account credentials, follow the steps to view your credentials. I'm using Wix Hotels. How do I set up my payments?Payments for Wix Hotels is managed through the Hotels tab. Learn how to set up payments for Wix Hotels.

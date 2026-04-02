@@ -1,0 +1,3 @@
+Wix Editor: Image Issues
+If you are experiencing issues with your images on your site, please follow the steps below:
+Make sure that the files you are uploading meet the requirements. Click here for guidelines. Try viewing your site on another device to see if the image issue occurs there as well. Click any "?" inside the editor and type your problem. You might find the answer you are looking for. Follow our general interactive tutorial here.If you are still having problems after completing the steps above, click here to contact Customer Care. Please also provide a screenshot of the issue.

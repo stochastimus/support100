@@ -1,0 +1,16 @@
+Wix Editor: Customizing the Design of Your Slideshow
+Customize your slideshow so that it looks exactly how you want. You can select a different background for each slide and adjust specific features of the slides such as the border and corners.In this article, learn more about:
+Changing your slideshow background Customizing the design options of your slideshowChanging your slideshow backgroundChange the background of your slides by adding an image, video, color or gradient.Each slide can have a different background, so you can use each one to display different media or color themes, depending on your needs.To change the background of your slideshow:
+Click the slideshow in the editor. Click the arrows next to the slide number to navigate to the relevant slide. Click Change Slide Background. Choose the type of background you want to add:
+    
+Image or Video:
+
+Click Image or Video. Select a file from the Media Manager or click Upload Media. Click Change Background.   Color or Gradient:
+        
+Click Color. Select from one of the following options:
+            
+Color: Select a color from the Color Picker and use the settings to adjust its opacity. Gradient : Apply a cool effect to your slideshow background with a Linear, Radial, or Conic gradient.  Fluid gradient : Make your slideshows stand out with a sophisticated fluid gradient.       Customizing the design options of your slideshowDesign your slideshow to promote your brand and aesthetic. You can customize settings such as the fill color, as well as add shadows and borders to give your slideshows depth. To customize the design of your slideshow:
+Click the slideshow in your editor. Click the Design icon . (Optional) Select a preset design from the top of the panel. Customize the preset design using the options:
+    
+Fill Color & Opacity: Choose a color and set the opacity of your navigation arrows and buttons to match your site's theme. Borders: Choose a color and adjust the opacity and width of your border to make the slideshow stand out on your page. Corners: Adjust the radius of the corners to make the border more circular. Shadow: Create and customize a shadow to add depth to your slideshow. You can adjust settings such as the angle and distance to have it look exactly as you want.  Notes:
+The design options available depend on the preset you choose. Only the Fill Color & Opacity options are available for full-width slideshows.

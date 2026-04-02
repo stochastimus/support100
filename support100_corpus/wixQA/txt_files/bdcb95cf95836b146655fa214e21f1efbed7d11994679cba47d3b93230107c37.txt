@@ -1,0 +1,3 @@
+Wix Editor: Adding a Calendar
+Add a calendar to your site so visitors can discover upcoming events in an interactive and engaging way. There are a range of options available to suit your site's needs. To add a calendar:
+Click Add Apps  on the left side of the Editor. Type "Calendar" in the search field and press Enter. Scroll through the available calendar apps.  Note: The Google Event Calendar and Wix Bookings apps are created by Wix. Select the app you want to add. Click Add to Site. Click the app in the Editor. Click Settings to set up the app.

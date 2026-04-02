@@ -1,0 +1,50 @@
+Customizing the Cart Page
+Important:This article is relevant for Wix Stores, Wix Bookings, and Wix Restaurants Orders (New).Similar to a shopping cart in a supermarket, your Cart Page is where customers place items they are interested in buying. When they're done browsing, they can proceed to checkout and complete the order.In this article, learn more about:
+Accessing the Cart page settings Customizing the settings of your Cart page Designing your Cart page Editing text on the Cart page Customizing the Cart page on mobile Frequently asked questions (FAQs)Accessing the Cart page settingsAccess to the Cart page varies according to which business solution(s) you use:
+Wix Stores: The Cart page is one of your Store pages. Wix Bookings: The Cart page is one of your Bookings pages. Wix Restaurants or any combination of solutions: The Cart page is listed under Cart & Thank You.Wix EditorStudio Editor
+Go to your editor. Click Pages & Menu  on the left side of the editor. Select an option:
+    
+My site has only Wix Stores:
+        
+Click Store Pages. Click Cart Page.   My site has only Wix Bookings:
+        
+Click Bookings Pages. Click Cart Page.   My site has Wix Restaurants Orders (New) / 2 business solutions:
+        
+Click Cart & Thank You. Click Cart Page.     Click the Cart Page element on your page. Click Settings.
+Go to your editor. Go to your Cart page: Click Pages  on the left side of the editor. Select an option:
+    
+My site has only Wix Stores:
+        
+Click Store Pages. Click Cart Page.   My site has only Wix Bookings:
+        
+Click Bookings Pages. Click Cart.   My site has Wix Restaurants Orders (New) / 2 business solutions:
+        
+Click Cart & Thank You. Click Cart Page.     Click the Cart Page element on your page. Click Settings.Customizing the settings of your Cart pageChoose what you want to display on the Cart page. For example, you can choose to hide the "Enter a promo code" link if you don't offer coupons, or the "Add a note" link if there's no need for customers to leave you notes.To customize your settings: 
+Go to the Cart page in your editor. Click the Cart Page element. Click Settings. Click the Settings tab.  Select the relevant checkbox(s) according to the information you'd like to display:
+    
+Shipping & delivery rates: Displays delivery info relevant to the customer's location.
+Tip: If you use only Wix Bookings, we recommend unchecking this option. Tax Costs: Displays the relevant tax estimation based on your customer's location.
+Note: Estimated taxes aren't displayed when you include tax in the product price.  Promo code link: Allows customers to enter coupon codes.
+Note: If selected, the promo code link appears on the Checkout Page, as well. Add a note: Customers can click to leave you a message.
+Note: Learn more about viewing customer notes.    Customize the Continue Browsing link:
+    
+Click Show link under Continue Browsing Link to show or hide the link.  If enabled, click Link iconto select where the link directs to.  
+Click the Show buttons toggle under Express Checkout to show or hide them:
+    
+Enabled: If you set up an express checkout payment provider (e.g. PayPal), an extra checkout button (e.g. PayPal button) is displayed. This directs customers to complete checkout there. Learn more Disabled: Only the "Checkout" button is displayed.  Tips:
+If you use Wix Restaurant Orders, you need to disable the Express Checkout option. When the cart is empty, it always displays the "Continue Browsing" link.Designing your Cart pageCustomize the design of the Cart page so it matches your site's overall look and feel. You have full control of the way this page looks, including the colors, fonts, buttons, links, and more.  To design your Cart Page: 
+Go to the Cart page in your editor. Click the Cart Page element. Click Settings. Click the Design tab.  (Optional) Click the Stretch to full width toggle to enable it. Customize the design settings of the following areas: 
+    
+Background and Borders: Change the color of the page's background and dividers.  Text Font & Color: Change the color and font of the page's title, body, and links. Buttons: Change the color, style and appearance of buttons on the Cart Page.  Payment methods: Design the express checkout buttons (e.g. PayPal).   Tips:
+To optimize the way the cart displays on mobile, make sure that the mobile page background color and cart background color are the same. If you go to the mobile editor and change the page background, it doesn't affect the background color on desktop. Editing your Cart Page textAdjust the text that appears on your Cart Page so it has the same tone and voice as the rest of your site. You can edit titles and buttons on the page.You can also add a short message that appears between the total and your checkout button.To edit your Cart Page text: 
+Go to the Cart page in your editor. Click the Cart Page element. Click Settings. Click the Text tab.  Edit any of the text options. (Optional) Add a disclaimer: Enter a short message (max. 90 characters).
+Tip: This message appears under the total in the order summary.Customizing the Cart Page on mobileDecide where you want to display the checkout button for customers viewing your site on mobile. Choose from just displaying it only at the bottom of the page or display it at both the top and the bottom.In the Studio Editor:Many customizations are available for the mobile breakpoint in the Studio Editor, however, it's not possible to select where to display the Checkout button.To customize the cart on mobile:
+Click the Switch to mobile icon  at the top of the editor. Click the Cart Page in the mobile Editor.  Click Settings. Select a placement option for the checkout button.FAQsClick a question below to learn more about the Cart page. How can I view the cart with items in it so I can see what I'm designing?The Cart page looks different when it's empty and when there are items in it. If the cart is empty, you can add a store product or restaurant menu item to the cart to help you design how it looks when there are items in the Cart page.Note: It's not currently possible to add a Wix Bookings service to the cart in preview mode.To add an item to the cart in the editor:
+Click Preview at the top right corner of your editor. Go to a shop page or your restaurant's online ordering page. Add an item to the cart. Click the Cart Icon and click through to the Cart page.  Click Back to Editor at the top right to return to editor mode.What will customers see if I enable Express Checkout?You can connect to PayPal or Apple Pay as payment providers. When you do, you can display the buttons as express checkout options.Enabling Express Checkout will add a checkout button to the Cart Part:
+and the Checkout Page:If you use Wix Stores and enabled the "Buy Now" button in the Product Page, you can also display express buttons there. Tip: If you selected an express payment option along with an additional option (e.g. manual payment, Square, Stripe), customers see more than one checkout button.  Learn more about the:
+PayPal express button Apple Pay express buttonCan customers add different types of items to the cart (store products, bookings services, restaurant items)?The Cart Icon, Cart Page, and Side Cart can be used with the following business solutions:
+Wix Stores Wix Bookings Wix Restaurants Orders (New)Customers can add one or more store products and bookings services to the cart and complete checkout for them at the same time. Note: Wix Restaurants menu items cannot currently be purchased as part of the same order as store products or bookings services.How can my Wix Stores customers go straight to checkout, bypassing the Cart Icon and Cart Page altogether?If you have the type of store where customers often purchase a single item, you may want to streamline the checkout process by allowing customers to bypass the Cart Icon, Side Cart (Mini Cart), and Cart Page. To do so, enable the Buy Now button on the Product Page. 
+Click the Product Page in your editor. Click Settings. Click the Settings tab. Scroll down and click the Show button toggle under Buy Now to enable it.
+I use Wix Bookings. How can I enable the Side Cart, Cart Page, and Cart Icon?
+Go to Booking Settings in your site's dashboard. Click Cart checkout.  Enable the Active toggle to add the Side Cart (Mini Cart), Cart Page, and Cart Icon to your site.
+Tip: With the cart active, clients can book more than one session at a time and add store products to the same order. Click Save.

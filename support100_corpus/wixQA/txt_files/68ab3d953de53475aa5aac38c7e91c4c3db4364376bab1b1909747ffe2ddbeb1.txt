@@ -1,0 +1,11 @@
+Wix Editor: Adding and Setting Up a Text & Icon Button
+Text and icon buttons are a great way to encourage site interaction from your visitors. With a range of options available, you can choose a catchy call-to-action, a striking icon, or even a button that displays both.Step 1 | Add your buttonYou can add a button from the Add Elements panel on the left side of the Editor. There are several different options available, with a range of layouts.To add a button:
+Click Add Elements  on the left side of the Editor. Click Button. Click Text & Icon Buttons. Click or drag your chosen button to add it to the page.Step 2 | Set up your buttonThere are many different ways that you can customize your button. Choose what you want to display, and adjust the settings as needed.To set up your button:
+Click the button in your Editor. Click Change Text & Icon. Select an option under What does the button show?:
+
+Text and icon: Both text and an icon are shown on the button. Icon only: The button only displays an icon. Text only: The button only displays text. Nothing: The button is blank.   Change the button settings using the available options:
+    
+What does it say?: Enter your chosen button text into the field. Choose icon: Choose what kind of icon you want to use:
+        
+Click Media from Wix to choose from a variety of free icons offered by Wix. Click + Upload Media to upload and use your own vector art files. Learn how to upload vector art   What's the alt text?: Add a description of the button so it's accessible to visitors using assistive technologies.  Note:Options available depend on what you choose to display on the button (text, icon, etc.).Step 3 | Add a link to your buttonAdd a link to your button to direct your site visitors to the relevant location. You can link to many different places, such as site pages, external web addresses, or documents.To add a link to your button:
+Select the button. Click the Link  icon. Select a link type from the list. Enter or upload the relevant link destination. Click Done.Did you know?You can also set up your button link from the Change Text & Icon panel.What's next?Customize your text and icon button to make it look how you want.

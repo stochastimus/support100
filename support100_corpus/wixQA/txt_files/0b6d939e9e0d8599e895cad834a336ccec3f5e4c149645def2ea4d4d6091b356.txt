@@ -1,0 +1,6 @@
+Wix Stores: Allowing Customers to Add a Message When Purchasing a Product
+Add a custom text box to your Product Page so that your customers can leave you a message when they purchase a specific product. This could be used to add personalization options to products, or for adding gift wrap options. To add a custom text field to your Product Page:
+Go to Products in your site's dashboard. Select the relevant product or click New Product to add a new one. Scroll down and click Add Custom Text Field. Enter the title of the text field (e.g. What name should we engrave?). Enter the character limit for the text field. Select or deselect the Mandatory field checkbox:
+    
+Selected: The customer must fill in the text field. Deselected: The customer can leave it blank.   (Optional) Click Add Another to add a second custom text field.
+Tip: You can add up to 2 fields. Click Save.After a customer makes an order, you can see the information they wrote in the Orders tab. 
