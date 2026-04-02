@@ -1,4 +1,4 @@
-# Support-100: Real-World Technical QA Benchmark
+# Support-100: a Real-World Technical QA Benchmark
 
 In this working paper, we present Support-100, a real-world enterprise multi-document,
 single-turn, technical QA dataset designed to support simultaneous evaluation of retrieval and
