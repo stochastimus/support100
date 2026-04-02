@@ -1,4 +1,4 @@
-# Support-100: a Real-World Technical QA Benchmark
+## Support-100: A Real-World Multi-Document, Single-Turn, Technical QA Benchmark: Probing a Retrieval-Inference Trade-Off
 
 In this working paper, we present Support-100, a real-world enterprise multi-document,
 single-turn, technical QA dataset designed to support simultaneous evaluation of retrieval and
@@ -25,17 +25,17 @@ sufficiently more accurate retrieval system.
 
 ![Figure 1.](figure_1.png)
 
-## The Paper
+### The Paper
 
 See [support100.pdf](support100.pdf).
 
-## The QA Dataset
+### The QA Dataset
 
 `QA.csv` contains, for each of 100 questions, the gold-standard answer and the relevant gold-standard documents to derive the answer. It is in `CSV` format.
 
 `QA.jsonl` contains a `JSONL` representation of the same.
 
-## The Corpus
+### The Corpus
 
 The `support100_corpus/` directory contains the document corpus for a retrieval-based QA evaluation benchmark built on ScienceLogic technical support content. It contains 402 PDF documents and 209 text files organized into three sub-collections.
 
