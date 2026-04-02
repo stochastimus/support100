@@ -27,7 +27,7 @@ sufficiently more accurate retrieval system.
 
 ## The Paper
 
-See [support100.pdf](suport100.pdf).
+See [support100.pdf](support100.pdf).
 
 ## The QA Dataset
 
